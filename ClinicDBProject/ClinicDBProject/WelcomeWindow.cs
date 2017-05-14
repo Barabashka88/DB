@@ -12,9 +12,9 @@ using Domain.Entities;
 
 namespace ClinicDBProject
 {
-    public partial class WelcomeForm : Form
+    public partial class WelcomeWindow : Form
     {
-        public WelcomeForm()
+        public WelcomeWindow()
         {
             InitializeComponent();
             ClinicContext cont = new ClinicContext();
@@ -26,6 +26,12 @@ namespace ClinicDBProject
             p.PhoneNumber = "123123123";
             cont.Persons.Add(p);
             cont.SaveChanges();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RegisterWindow form = new RegisterWindow();
+            form.ShowDialog();
         }
     }
 }

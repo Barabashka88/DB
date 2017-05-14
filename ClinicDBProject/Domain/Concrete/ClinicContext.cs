@@ -11,9 +11,9 @@ namespace Domain.Concrete
 {
     public class ClinicContext : DbContext
     {
-        public ClinicContext() : base("ClinicDB")
+        public ClinicContext() : base("DBClinic")
         {
-            Database.SetInitializer(new TravelDInitializer());
+            Database.SetInitializer(new ClinicDBInitializer());
         }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Patient> Patients { get; set; }
@@ -28,11 +28,10 @@ namespace Domain.Concrete
         {
             modelBuilder.Entity<Doctor>()
             .HasOptional(s => s.Login).WithRequired(ad => ad.Doctor);
-
         }
     }
 
-    public class TravelDInitializer : DropCreateDatabaseIfModelChanges<ClinicContext>
+    public class ClinicDBInitializer : DropCreateDatabaseIfModelChanges<ClinicContext>
     {
         protected override void Seed(ClinicContext context)
         {
