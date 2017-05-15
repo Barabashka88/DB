@@ -12,10 +12,21 @@ namespace ClinicDBProject
 {
     public partial class RegisterWindow : Form
     {
+        public WelcomeWindow form = new WelcomeWindow();
         public RegisterWindow()
         {
             InitializeComponent();
+            form.Close();
         }
 
+        private void RegisterWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
