@@ -13,7 +13,7 @@ namespace Domain.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PatientID { get; set; }
-        public double Height { get; set; }
+        public int Height { get; set; }
         public double Weight { get; set; }
         public int BloodGroup { get; set; }
 

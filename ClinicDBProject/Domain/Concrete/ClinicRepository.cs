@@ -16,6 +16,23 @@ namespace Domain.Concrete
             var patients = (from patient in context.Patients select patient);
             return patients.ToList();
         }
+        public IEnumerable<Person> GetAllPeople()
+        {
+            var people = from person in context.Persons select person;
+            return people.ToList();
+        }
+        public void AddPerson(Person person)
+        {
+            context.Persons.Add(person);
+        }
+        public void AddPatient(Patient patient)
+        {
+            context.Patients.Add(patient);
+        }
+        public void Save()
+        {
+            context.SaveChanges();
+        }
 
     }
 }

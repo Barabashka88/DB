@@ -17,15 +17,6 @@ namespace ClinicDBProject
         public WelcomeWindow()
         {
             InitializeComponent();
-            ClinicContext cont = new ClinicContext();
-            Person p = new Person();
-            p.FirstName = "123";
-            p.LastName = "123";
-            p.Address = "123";
-            p.DateOfBirth = DateTime.Now;
-            p.PhoneNumber = "123123123";
-            cont.Persons.Add(p);
-            cont.SaveChanges();
         }
 
         private void button1_Click(object sender, EventArgs e)

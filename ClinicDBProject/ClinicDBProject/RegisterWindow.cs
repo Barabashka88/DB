@@ -18,11 +18,23 @@ namespace ClinicDBProject
         {
             InitializeComponent();
             InitializeTable();
+            
         }
         public void InitializeTable()
         {
-            var patients = repository.GetAllPatients();
-            patientsView.DataSource = patients;
+            var query = (from patient in repository.GetAllPatients()
+                        join person in repository.GetAllPeople() on patient.Person.PersonID equals person.PersonID
+                        select new
+                        {
+                            Імя = patient.Person.FirstName,
+                            Прізвище = patient.Person.LastName,
+                            Адреса = patient.Person.Address,
+                            Телефон = patient.Person.PhoneNumber,
+                            Ріст = patient.Height,
+                            Вага = patient.Weight,
+                            ГрупаКрові = patient.BloodGroup,
+                        }).ToList();
+            patientsView.DataSource = query;
         }
         private void RegisterWindow_Load(object sender, EventArgs e)
         {
@@ -39,6 +51,11 @@ namespace ClinicDBProject
             AddOrEditPatientForm form = new AddOrEditPatientForm();
             form.Text = "Новий пацієнт";
             form.ShowDialog();
+            InitializeTable();
+        }
+
+        private void editPatientButton_Click(object sender, EventArgs e)
+        {
 
         }
     }
