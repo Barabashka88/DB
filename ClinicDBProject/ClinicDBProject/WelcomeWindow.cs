@@ -20,11 +20,25 @@ namespace ClinicDBProject
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void registerButton_Click(object sender, EventArgs e)
         {
             RegisterWindow form = new RegisterWindow(repository);
-           
+            this.Hide();
             form.ShowDialog();
+            this.Show();
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            LoginWindow form = new LoginWindow(repository);
+            
+            form.ShowDialog();
+            this.Show();
+        }
+
+        private void appointmentsButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

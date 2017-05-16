@@ -28,51 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.registerButton = new System.Windows.Forms.Button();
+            this.appointmentsButton = new System.Windows.Forms.Button();
+            this.loginButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // registerButton
             // 
-            this.button1.Font = new System.Drawing.Font("Mistral", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 202);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 60);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Зареєструвати пацієнта";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.registerButton.Font = new System.Drawing.Font("Mistral", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.registerButton.Location = new System.Drawing.Point(16, 249);
+            this.registerButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.registerButton.Name = "registerButton";
+            this.registerButton.Size = new System.Drawing.Size(167, 74);
+            this.registerButton.TabIndex = 0;
+            this.registerButton.Text = "Зареєструвати пацієнта";
+            this.registerButton.UseVisualStyleBackColor = true;
+            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
-            // button2
+            // appointmentsButton
             // 
-            this.button2.Font = new System.Drawing.Font("Mistral", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(143, 202);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 60);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Переглянути прийоми";
-            this.button2.UseVisualStyleBackColor = true;
+            this.appointmentsButton.Font = new System.Drawing.Font("Mistral", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appointmentsButton.Location = new System.Drawing.Point(191, 249);
+            this.appointmentsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.appointmentsButton.Name = "appointmentsButton";
+            this.appointmentsButton.Size = new System.Drawing.Size(167, 74);
+            this.appointmentsButton.TabIndex = 1;
+            this.appointmentsButton.Text = "Переглянути прийоми";
+            this.appointmentsButton.UseVisualStyleBackColor = true;
+            this.appointmentsButton.Click += new System.EventHandler(this.appointmentsButton_Click);
             // 
-            // button3
+            // loginButton
             // 
-            this.button3.Font = new System.Drawing.Font("Mistral", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(274, 202);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(125, 60);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Особистий кабінет лікаря";
-            this.button3.UseVisualStyleBackColor = true;
+            this.loginButton.Font = new System.Drawing.Font("Mistral", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginButton.Location = new System.Drawing.Point(365, 249);
+            this.loginButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Size = new System.Drawing.Size(167, 74);
+            this.loginButton.TabIndex = 2;
+            this.loginButton.Text = "Особистий кабінет лікаря";
+            this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // WelcomeWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 274);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(552, 337);
+            this.Controls.Add(this.loginButton);
+            this.Controls.Add(this.appointmentsButton);
+            this.Controls.Add(this.registerButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "WelcomeWindow";
             this.Text = "Form1";
@@ -82,9 +88,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button registerButton;
+        private System.Windows.Forms.Button appointmentsButton;
+        private System.Windows.Forms.Button loginButton;
     }
 }
 

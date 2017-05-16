@@ -53,7 +53,9 @@ namespace ClinicDBProject
         {
             AddOrEditPatientForm form = new AddOrEditPatientForm(repository);
             form.Text = "Новий пацієнт";
+            this.Hide();
             form.ShowDialog();
+            this.Show();
             InitializeTable();
         }
 
@@ -72,7 +74,9 @@ namespace ClinicDBProject
                 form.weightTextBox.Text = patientsView.SelectedRows[0].Cells[6].Value.ToString();
                 form.BloodComboBox.SelectedIndex = form.BloodComboBox.FindString(patientsView.SelectedRows[0].Cells[7].Value.ToString());
                 form.patientID = Convert.ToInt32(patientsView.SelectedRows[0].Cells[8].Value);
+                this.Hide();
                 form.ShowDialog();
+                this.Show();
                 repository.Save();
                 InitializeTable();
             }

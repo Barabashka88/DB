@@ -32,7 +32,7 @@ namespace ClinicDBProject
         }
 
         private void saveButton_Click(object sender, EventArgs e)
-        {
+        {            
             Person person;
             Patient patient;
             if (Text == "Новий пацієнт")

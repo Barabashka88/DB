@@ -18,5 +18,7 @@ namespace Domain.Entities
         public int BloodGroup { get; set; }
 
         public virtual Person Person { get; set; }
+
+        public int a { get; set; }
     }
 }

@@ -15,6 +15,5 @@ namespace Domain.Entities
         public int ResultID { get; set; }
         public virtual Patient Patient { get; set; }
         public string Description { get; set; }
-                    
     }
 }
