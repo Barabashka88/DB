@@ -248,10 +248,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox firstNameTextBox;
-        private System.Windows.Forms.TextBox lastNameTextBox;
-        private System.Windows.Forms.TextBox heightTextBox;
-        private System.Windows.Forms.TextBox weightTextBox;
+        public System.Windows.Forms.TextBox firstNameTextBox;
+        public System.Windows.Forms.TextBox lastNameTextBox;
+        public System.Windows.Forms.TextBox heightTextBox;
+        public System.Windows.Forms.TextBox weightTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -260,11 +260,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox adressTextBox;
-        private System.Windows.Forms.TextBox PhoneTextBox;
-        private System.Windows.Forms.ComboBox BloodComboBox;
-        private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.DateTimePicker birthDateTimePicker;
+        public System.Windows.Forms.TextBox adressTextBox;
+        public System.Windows.Forms.TextBox PhoneTextBox;
+        public System.Windows.Forms.ComboBox BloodComboBox;
+        public System.Windows.Forms.Button saveButton;
+        public System.Windows.Forms.Button cancelButton;
+        public System.Windows.Forms.DateTimePicker birthDateTimePicker;
     }
 }

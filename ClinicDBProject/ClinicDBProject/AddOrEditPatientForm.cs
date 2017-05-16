@@ -15,12 +15,13 @@ namespace ClinicDBProject
     public partial class AddOrEditPatientForm : Form
     {
         ClinicRepository repository = new ClinicRepository();
+
         public AddOrEditPatientForm()
         {
             InitializeComponent();
             List<int> list = new List<int> { 1, 2, 3, 4 };
-
             BloodComboBox.DataSource = list;
+           
         }
 
         private void button2_Click(object sender, EventArgs e)

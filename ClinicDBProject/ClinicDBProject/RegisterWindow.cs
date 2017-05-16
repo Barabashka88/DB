@@ -14,26 +14,27 @@ namespace ClinicDBProject
     public partial class RegisterWindow : Form
     {
         ClinicRepository repository = new ClinicRepository();
-            public RegisterWindow()
+        public RegisterWindow()
         {
             InitializeComponent();
             InitializeTable();
-            
+
         }
         public void InitializeTable()
         {
             var query = (from patient in repository.GetAllPatients()
-                        join person in repository.GetAllPeople() on patient.Person.PersonID equals person.PersonID
-                        select new
-                        {
-                            Імя = patient.Person.FirstName,
-                            Прізвище = patient.Person.LastName,
-                            Адреса = patient.Person.Address,
-                            Телефон = patient.Person.PhoneNumber,
-                            Ріст = patient.Height,
-                            Вага = patient.Weight,
-                            ГрупаКрові = patient.BloodGroup,
-                        }).ToList();
+                         join person in repository.GetAllPeople() on patient.Person.PersonID equals person.PersonID
+                         select new
+                         {
+                             Імя = patient.Person.FirstName,
+                             Прізвище = patient.Person.LastName,
+                             Адреса = patient.Person.Address,
+                             Телефон = patient.Person.PhoneNumber,
+                             Дата_народження = patient.Person.DateOfBirth,
+                             Ріст = patient.Height,
+                             Вага = patient.Weight,
+                             ГрупаКрові = patient.BloodGroup,
+                         }).ToList();
             patientsView.DataSource = query;
         }
         private void RegisterWindow_Load(object sender, EventArgs e)
@@ -56,7 +57,20 @@ namespace ClinicDBProject
 
         private void editPatientButton_Click(object sender, EventArgs e)
         {
-
+            if (patientsView.SelectedRows.Count == 1)
+            {
+                AddOrEditPatientForm form = new AddOrEditPatientForm();
+                form.Text = "Змінити данні";
+                form.firstNameTextBox.Text = patientsView.SelectedRows[0].Cells[0].Value.ToString();
+                form.lastNameTextBox.Text = patientsView.SelectedRows[0].Cells[1].Value.ToString();
+                form.birthDateTimePicker.Value = DateTime.Parse(patientsView.SelectedRows[0].Cells[4].Value.ToString());
+                form.adressTextBox.Text = patientsView.SelectedRows[0].Cells[2].Value.ToString();
+                form.PhoneTextBox.Text = patientsView.SelectedRows[0].Cells[3].ToString();
+                form.heightTextBox.Text = patientsView.SelectedRows[0].Cells[5].ToString();
+                form.weightTextBox.Text = patientsView.SelectedRows[0].Cells[6].ToString();
+                //form.BloodComboBox.val = patientsView.SelectedRows[0].Cells[7].ToString();
+                form.ShowDialog();
+            }
         }
     }
 }
