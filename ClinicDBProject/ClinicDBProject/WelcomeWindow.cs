@@ -14,6 +14,7 @@ namespace ClinicDBProject
 {
     public partial class WelcomeWindow : Form
     {
+        public ClinicRepository repository = new ClinicRepository();
         public WelcomeWindow()
         {
             InitializeComponent();
@@ -21,7 +22,7 @@ namespace ClinicDBProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RegisterWindow form = new RegisterWindow();
+            RegisterWindow form = new RegisterWindow(repository);
            
             form.ShowDialog();
         }
