@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Entities;
 
 namespace Domain.Concrete
 {
-    class ClinicRepository
+    public class ClinicRepository
     {
-        private ClinicContext context;
-        public ClinicRepository(ClinicContext cont)
+        private ClinicContext context = new ClinicContext();
+        
+        public IEnumerable<Patient> GetAllPatients()
         {
-            context = cont;
+            var patients = (from patient in context.Patients select patient);
+            return patients.ToList();
         }
-
 
     }
 }

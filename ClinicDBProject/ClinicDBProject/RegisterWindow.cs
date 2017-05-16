@@ -7,18 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Domain.Concrete;
+using Domain.Entities;
 namespace ClinicDBProject
 {
     public partial class RegisterWindow : Form
     {
-        public WelcomeWindow form = new WelcomeWindow();
-        public RegisterWindow()
+        ClinicRepository repository = new ClinicRepository();
+            public RegisterWindow()
         {
             InitializeComponent();
-            form.Close();
+            InitializeTable();
         }
-
+        public void InitializeTable()
+        {
+            var patients = repository.GetAllPatients();
+            patientsView.DataSource = patients;
+        }
         private void RegisterWindow_Load(object sender, EventArgs e)
         {
 
@@ -27,6 +32,14 @@ namespace ClinicDBProject
         private void backButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void addPatientButton_Click(object sender, EventArgs e)
+        {
+            AddOrEditPatientForm form = new AddOrEditPatientForm();
+            form.Text = "Новий пацієнт";
+            form.ShowDialog();
+
         }
     }
 }
