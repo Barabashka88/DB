@@ -19,6 +19,6 @@ namespace Domain.Entities
 
         public virtual Person Person { get; set; }
 
-        //public int a { get; set; }
+        public int a { get; set; }
     }
 }

@@ -64,21 +64,23 @@ namespace ClinicDBProject
             if (patientsView.SelectedRows.Count == 1)
             {
                 AddOrEditPatientForm form = new AddOrEditPatientForm(repository);
+
                 form.Text = "Змінити данні";
-                form.firstNameTextBox.Text = patientsView.SelectedRows[0].Cells[0].Value.ToString();
-                form.lastNameTextBox.Text = patientsView.SelectedRows[0].Cells[1].Value.ToString();
-                form.birthDateTimePicker.Value = DateTime.Parse(patientsView.SelectedRows[0].Cells[4].Value.ToString());
-                form.adressTextBox.Text = patientsView.SelectedRows[0].Cells[2].Value.ToString();
-                form.PhoneTextBox.Text = patientsView.SelectedRows[0].Cells[3].Value.ToString();
-                form.heightTextBox.Text = patientsView.SelectedRows[0].Cells[5].Value.ToString();
-                form.weightTextBox.Text = patientsView.SelectedRows[0].Cells[6].Value.ToString();
-                form.BloodComboBox.SelectedIndex = form.BloodComboBox.FindString(patientsView.SelectedRows[0].Cells[7].Value.ToString());
                 form.patientID = Convert.ToInt32(patientsView.SelectedRows[0].Cells[8].Value);
+                var patient = repository.GetPatientByID(form.patientID);
+                form.firstNameTextBox.Text = patient.Person.FirstName.ToString();
+                form.lastNameTextBox.Text = patient.Person.LastName.ToString();
+                form.birthDateTimePicker.Value = DateTime.Parse(patient.Person.DateOfBirth.ToString());
+                form.adressTextBox.Text = patient.Person.Address.ToString();
+                form.PhoneTextBox.Text = patient.Person.PhoneNumber.ToString();
+                form.heightTextBox.Text = patient.Height.ToString();
+                form.weightTextBox.Text = patient.Weight.ToString();
+                form.BloodComboBox.SelectedIndex = form.BloodComboBox.FindString(patient.BloodGroup.ToString());
                 this.Hide();
                 form.ShowDialog();
                 this.Show();
                 repository.Save();
-                InitializeTable();
+               InitializeTable();
             }
         }
 

@@ -34,11 +34,12 @@ namespace ClinicDBProject
                          select logins).ToList();
             if (query[0].Password == passwordTextBox.Text && query[0].Login == loginTextBox.Text)
             {
-                DocWindow form = new DocWindow(repository);
-                form.ShowDialog();
-                form.Focus();
+                DocWindow form = new DocWindow(repository,welcomeWindow,this);
+                form.docID = repository.GetDoctorByLogin(query[0].Login).DoctorID;
+                form.InitializeForm();
                 welcomeWindow.Hide();
-                this.Close();
+                this.Hide();
+                form.ShowDialog();
             }
             else
             {

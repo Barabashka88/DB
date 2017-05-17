@@ -13,6 +13,7 @@ namespace Domain.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DoctorID { get; set; }
+
         public virtual Person Person { get; set; }
         public string Specialization { get; set; }
 

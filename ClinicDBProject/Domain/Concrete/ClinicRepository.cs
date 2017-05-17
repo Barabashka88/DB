@@ -62,6 +62,14 @@ namespace Domain.Concrete
         {
             return context.Patients.FirstOrDefault(x => x.PatientID == patientID);
         }
+        public Doctor GetDoctorByLogin(string login)
+        {
+            return context.Doctors.FirstOrDefault(x => x.Login.Login == login);
+        }
+        public Doctor GetDoctorByID(int     doctorId)
+        {
+            return context.Doctors.FirstOrDefault(x => x.DoctorID == doctorId);
+        }
         public void DeletePatient(Patient patient)
         {
             context.Patients.Remove(patient);
