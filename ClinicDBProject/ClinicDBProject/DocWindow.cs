@@ -35,10 +35,12 @@ namespace ClinicDBProject
             doctorNameLabel.Text = doc.Person.FirstName.ToString();
             doctorSurnameLabel.Text = doc.Person.LastName.ToString();
             doctorSpecializationLabel.Text = doc.Specialization.ToString();
-            var query = (from patien in repository.GetAllPatients() select patien).ToList();
+            var query = from people in repository.GetAllPeople()
+                        join patient in repository.GetAllPatients() on people.PersonID equals patient.Person.PersonID
+                        select people;
             patientsComboBox.DataSource = query.ToList();
-            patientsComboBox.ValueMember = "PatientId";
-            //patientsComboBox.DisplayMember = "FirstName";
+            patientsComboBox.ValueMember = "PersonId";
+            patientsComboBox.DisplayMember = "FullName";
         }
     }
 }

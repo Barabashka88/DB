@@ -17,12 +17,12 @@ namespace Domain.Concrete
         public IEnumerable<Patient> GetAllPatients()
         {
             var patients = (from patient in context.Patients select patient);
-            return patients.ToList();
+            return patients;
         }
         public IEnumerable<Person> GetAllPeople()
         {
             var people = from person in context.Persons select person;
-            return people.ToList();
+            return people;
         }
         public IEnumerable<DocLogin> GetAllLogins()
         {

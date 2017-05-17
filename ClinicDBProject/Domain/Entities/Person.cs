@@ -19,6 +19,10 @@ namespace Domain.Entities
         public string Address { get; set; }
         public DateTime DateOfBirth { get; set; }
 
+        public string FullName
+        {
+            get { return FirstName + " " + LastName; }
+        }
         //public virtual Patient Patient { get; set; }
         //public virtual Doctor Doctor { get; set; }
     }
