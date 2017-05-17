@@ -14,10 +14,17 @@ namespace ClinicDBProject
     public partial class LoginWindow : Form
     {
         public ClinicRepository repository;
+        private WelcomeWindow welcomeWindow;
+
         public LoginWindow(ClinicRepository repository)
         {
             this.repository = repository;
             InitializeComponent();
+        }
+
+        public LoginWindow(ClinicRepository repository, WelcomeWindow welcomeWindow) : this(repository)
+        {
+            this.welcomeWindow = welcomeWindow;
         }
 
         private void logInButton_Click(object sender, EventArgs e)
@@ -28,20 +35,15 @@ namespace ClinicDBProject
             if (query[0].Password == passwordTextBox.Text && query[0].Login == loginTextBox.Text)
             {
                 DocWindow form = new DocWindow(repository);
-                form.Show();
+                form.ShowDialog();
                 form.Focus();
-                WelcomeWindow form2 = new WelcomeWindow();
-                form2.Hide();
-                form2.Visible = false;
-                form.Focus();
+                welcomeWindow.Hide();
                 this.Close();
-                form.Focus();
             }
             else
             {
                 MessageBox.Show("Данні введено неправильно");
             }
-
         }
 
         private void backButton_Click(object sender, EventArgs e)

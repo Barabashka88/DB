@@ -20,5 +20,6 @@ namespace ClinicDBProject
             this.repository = repository;
             InitializeComponent();
         }
+
     }
 }

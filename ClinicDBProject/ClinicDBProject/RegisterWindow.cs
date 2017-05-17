@@ -33,7 +33,7 @@ namespace ClinicDBProject
                              Дата_народження = patient.Person.DateOfBirth,
                              Ріст = patient.Height,
                              Вага = patient.Weight,
-                             ГрупаКрові = patient.BloodGroup,
+                             Група_Крові = patient.BloodGroup,
                              ID = patient.PatientID
                          }).ToList();
             patientsView.DataSource = query;

@@ -15,5 +15,9 @@ namespace Domain.Entities
         public int ResultID { get; set; }
         public virtual Patient Patient { get; set; }
         public string Description { get; set; }
+
+        public virtual IEnumerable<Analysis> Analyzes { get; set; }
+        public virtual IEnumerable<Drug> Drugs { get; set; }
+
     }
 }

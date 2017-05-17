@@ -15,5 +15,8 @@ namespace Domain.Entities
         public int DrugID { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
+
+        public virtual IEnumerable<AppointmentResult> Results { get; set; }
+
     }
 }

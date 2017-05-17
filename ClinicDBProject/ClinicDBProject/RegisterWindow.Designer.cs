@@ -28,32 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.patientsView = new System.Windows.Forms.DataGridView();
             this.backButton = new System.Windows.Forms.Button();
             this.addPatientButton = new System.Windows.Forms.Button();
             this.editPatientButton = new System.Windows.Forms.Button();
             this.deletePatientButton = new System.Windows.Forms.Button();
+            this.patientsView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.patientsView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // patientsView
-            // 
-            this.patientsView.AllowUserToAddRows = false;
-            this.patientsView.AllowUserToDeleteRows = false;
-            this.patientsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.patientsView.Location = new System.Drawing.Point(189, 14);
-            this.patientsView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.patientsView.Name = "patientsView";
-            this.patientsView.ReadOnly = true;
-            this.patientsView.RowTemplate.Height = 24;
-            this.patientsView.Size = new System.Drawing.Size(525, 315);
-            this.patientsView.TabIndex = 0;
             // 
             // backButton
             // 
             this.backButton.Font = new System.Drawing.Font("Mistral", 15F);
             this.backButton.Location = new System.Drawing.Point(16, 14);
-            this.backButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.backButton.Margin = new System.Windows.Forms.Padding(4);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(167, 74);
             this.backButton.TabIndex = 1;
@@ -65,7 +52,7 @@
             // 
             this.addPatientButton.Font = new System.Drawing.Font("Mistral", 15F);
             this.addPatientButton.Location = new System.Drawing.Point(16, 92);
-            this.addPatientButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addPatientButton.Margin = new System.Windows.Forms.Padding(4);
             this.addPatientButton.Name = "addPatientButton";
             this.addPatientButton.Size = new System.Drawing.Size(167, 74);
             this.addPatientButton.TabIndex = 2;
@@ -77,7 +64,7 @@
             // 
             this.editPatientButton.Font = new System.Drawing.Font("Mistral", 15F);
             this.editPatientButton.Location = new System.Drawing.Point(16, 174);
-            this.editPatientButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editPatientButton.Margin = new System.Windows.Forms.Padding(4);
             this.editPatientButton.Name = "editPatientButton";
             this.editPatientButton.Size = new System.Drawing.Size(167, 74);
             this.editPatientButton.TabIndex = 4;
@@ -89,7 +76,7 @@
             // 
             this.deletePatientButton.Font = new System.Drawing.Font("Mistral", 15F);
             this.deletePatientButton.Location = new System.Drawing.Point(16, 255);
-            this.deletePatientButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deletePatientButton.Margin = new System.Windows.Forms.Padding(4);
             this.deletePatientButton.Name = "deletePatientButton";
             this.deletePatientButton.Size = new System.Drawing.Size(167, 74);
             this.deletePatientButton.TabIndex = 3;
@@ -97,16 +84,30 @@
             this.deletePatientButton.UseVisualStyleBackColor = true;
             this.deletePatientButton.Click += new System.EventHandler(this.deletePatientButton_Click);
             // 
+            // patientsView
+            // 
+            this.patientsView.AllowUserToAddRows = false;
+            this.patientsView.AllowUserToDeleteRows = false;
+            this.patientsView.AllowUserToResizeRows = false;
+            this.patientsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.patientsView.Location = new System.Drawing.Point(190, 14);
+            this.patientsView.Name = "patientsView";
+            this.patientsView.ReadOnly = true;
+            this.patientsView.RowTemplate.Height = 24;
+            this.patientsView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.patientsView.Size = new System.Drawing.Size(527, 315);
+            this.patientsView.TabIndex = 5;
+            // 
             // RegisterWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(729, 343);
+            this.Controls.Add(this.patientsView);
             this.Controls.Add(this.editPatientButton);
             this.Controls.Add(this.deletePatientButton);
             this.Controls.Add(this.addPatientButton);
             this.Controls.Add(this.backButton);
-            this.Controls.Add(this.patientsView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
@@ -119,11 +120,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView patientsView;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button addPatientButton;
         private System.Windows.Forms.Button editPatientButton;
         private System.Windows.Forms.Button deletePatientButton;
+        private System.Windows.Forms.DataGridView patientsView;
     }
 }

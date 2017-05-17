@@ -81,7 +81,31 @@ namespace Domain.Concrete
             };
             context.DocsLogins.Add(login);
 
+            Analysis analys1 = new Analysis
+            {
+                Name = "Обширний аналі крові",
+                Price = 300
+            };
+            context.Analyzes.Add(analys1);
 
+            Analysis analys2 = new Analysis
+            {
+                Name = "МРТ",
+                Price = 7000
+            };
+            context.Analyzes.Add(analys2);
+            Drug drug1 = new Drug
+            {
+                Name = "Вікодин",
+                Price = 500
+            };
+            context.Drugs.Add(drug1);
+            Drug drug2 = new Drug
+            {
+                Name = "Лікарська марихуана",
+                Price = 800
+            };
+            context.Drugs.Add(drug2);
             base.Seed(context);
         }
     }

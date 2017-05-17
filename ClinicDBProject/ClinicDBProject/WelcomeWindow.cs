@@ -30,10 +30,8 @@ namespace ClinicDBProject
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            LoginWindow form = new LoginWindow(repository);
-            
+            LoginWindow form = new LoginWindow(repository,this);
             form.ShowDialog();
-            this.Show();
         }
 
         private void appointmentsButton_Click(object sender, EventArgs e)

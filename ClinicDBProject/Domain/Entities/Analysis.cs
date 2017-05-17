@@ -16,5 +16,6 @@ namespace Domain.Entities
         public string Name { get; set; }
         public decimal Price { get; set; }
 
+        public virtual IEnumerable<AppointmentResult> Results { get; set; }
     }
 }
