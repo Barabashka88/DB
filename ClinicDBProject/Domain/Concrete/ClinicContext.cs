@@ -110,9 +110,20 @@ namespace Domain.Concrete
             {
                 Doctor = doctor,
                 Patient = patient,
-                Date = DateTime.Today
+                Date = DateTime.Today,
+                Description = "so bad"
+           
+            };
+            Appointment appointment2 = new Appointment
+            {
+                Doctor = doctor,
+                Patient = patient,
+                Date = DateTime.Today,
+                Description = "very bad"
+
             };
             context.Appointments.Add(appointment);
+            context.Appointments.Add(appointment2);
 
             base.Seed(context);
         }

@@ -59,6 +59,7 @@ namespace ClinicDBProject
                             Пацієнт = appoint.Patient.Person.FullName,
                             Лікар = appoint.Doctor.Person.FullName,
                             ДатаПрийому = appoint.Date,
+                            Опис = appoint.Description
                         };
                     appointmentsView.DataSource = query.ToList();
                     appointmentsView.Columns[0].Visible = false;
