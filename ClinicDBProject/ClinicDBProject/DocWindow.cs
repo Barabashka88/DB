@@ -15,8 +15,8 @@ namespace ClinicDBProject
     public partial class DocWindow : Form
     {
         private LoginWindow loginWindow;
-        private ClinicRepository repository;
-        public int docID;
+        private readonly ClinicRepository repository;
+        public int docId;
         private WelcomeWindow welcomeWindow;
 
         public DocWindow(ClinicRepository repository)
@@ -31,16 +31,49 @@ namespace ClinicDBProject
         }
         public void InitializeForm()
         {
-            Doctor doc = repository.GetDoctorByID(docID);
-            doctorNameLabel.Text = doc.Person.FirstName.ToString();
-            doctorSurnameLabel.Text = doc.Person.LastName.ToString();
-            doctorSpecializationLabel.Text = doc.Specialization.ToString();
+            Doctor doc = repository.GetDoctorById(docId);
+            doctorNameLabel.Text = doc.Person.FirstName;
+            doctorSurnameLabel.Text = doc.Person.LastName;
+            doctorSpecializationLabel.Text = doc.Specialization;
             var query = from people in repository.GetAllPeople()
-                        join patient in repository.GetAllPatients() on people.PersonID equals patient.Person.PersonID
+                        join patient in repository.GetAllPatients() on people.PersonId equals patient.Person.PersonId
                         select people;
             patientsComboBox.DataSource = query.ToList();
             patientsComboBox.ValueMember = "PersonId";
             patientsComboBox.DisplayMember = "FullName";
+            patientsComboBox.SelectedIndex = -1;
+        }
+
+        private void patientsComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (patientsComboBox.SelectedIndex != -1)
+            {
+                if (patientsComboBox.DisplayMember == "FullName")
+                {
+                    var query = from appoint in repository.GetAllAppointments()
+                        where appoint.Patient.Person.PersonId == (int) patientsComboBox.SelectedValue &&
+                              appoint.Doctor == repository.GetDoctorById(docId)
+                        select new
+                        {
+                            AppointmentId = appoint.AppointmentId,
+                            Пацієнт = appoint.Patient.Person.FullName,
+                            Лікар = appoint.Doctor.Person.FullName,
+                            ДатаПрийому = appoint.Date,
+                        };
+                    appointmentsView.DataSource = query.ToList();
+                    appointmentsView.Columns[0].Visible = false;
+                }
+            }
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void DocWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            welcomeWindow.Show();
         }
     }
 }

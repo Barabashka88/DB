@@ -12,7 +12,7 @@ namespace Domain.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int DrugID { get; set; }
+        public int DrugId { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
 

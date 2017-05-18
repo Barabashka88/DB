@@ -23,7 +23,7 @@ namespace Domain.Concrete
 
         static ClinicContext()
         {
-            Database.SetInitializer<ClinicContext>(new ClinicDBInitializer());
+            Database.SetInitializer(new ClinicDbInitializer());
         }
         public static ClinicContext Create()
         {
@@ -37,7 +37,7 @@ namespace Domain.Concrete
         }
     }
 
-    public class ClinicDBInitializer : DropCreateDatabaseIfModelChanges<ClinicContext>
+    public class ClinicDbInitializer : DropCreateDatabaseIfModelChanges<ClinicContext>
     {
         protected override void Seed(ClinicContext context)
         {
@@ -106,6 +106,14 @@ namespace Domain.Concrete
                 Price = 800
             };
             context.Drugs.Add(drug2);
+            Appointment appointment = new Appointment
+            {
+                Doctor = doctor,
+                Patient = patient,
+                Date = DateTime.Today
+            };
+            context.Appointments.Add(appointment);
+
             base.Seed(context);
         }
     }

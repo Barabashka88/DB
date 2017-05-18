@@ -24,6 +24,7 @@ namespace ClinicDBProject
             InitializeComponent();
             List<int> list = new List<int> { 1, 2, 3, 4 };
             BloodComboBox.DataSource = list;
+            BloodComboBox.SelectedIndex = -1;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -58,8 +59,8 @@ namespace ClinicDBProject
             }
             else
             {
-                patient = repository.GetPatientByID(patientID);
-                person = repository.GetPersonByID(patient.Person.PersonID);
+                patient = repository.GetPatientById(patientID);
+                person = repository.GetPersonById(patient.Person.PersonId);
                 person.FirstName = firstNameTextBox.Text;
                 person.LastName = lastNameTextBox.Text;
                 person.PhoneNumber = PhoneTextBox.Text;

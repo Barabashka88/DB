@@ -12,7 +12,7 @@ namespace Domain.Concrete
 {
     public class ClinicRepository
     {
-        private ClinicContext context = new ClinicContext();
+        private readonly ClinicContext context = new ClinicContext();
 
         public IEnumerable<Patient> GetAllPatients()
         {
@@ -34,6 +34,11 @@ namespace Domain.Concrete
             var docs = from doc in context.Doctors select doc;
             return docs.ToList();
         }
+        public IEnumerable<Appointment> GetAllAppointments()
+        {
+            var appointments = from appointment in context.Appointments select appointment;
+            return appointments;
+        }
         public void AddPerson(Person person)
         {
             context.Persons.Add(person);
@@ -54,21 +59,21 @@ namespace Domain.Concrete
             context.Entry(personObj).State = EntityState.Modified;
             Save();
         }
-        public Person GetPersonByID(int personID)
+        public Person GetPersonById(int personId)
         {
-            return context.Persons.FirstOrDefault(x => x.PersonID == personID);
+            return context.Persons.FirstOrDefault(x => x.PersonId == personId);
         }
-        public Patient GetPatientByID(int patientID)
+        public Patient GetPatientById(int patientId)
         {
-            return context.Patients.FirstOrDefault(x => x.PatientID == patientID);
+            return context.Patients.FirstOrDefault(x => x.PatientId == patientId);
         }
         public Doctor GetDoctorByLogin(string login)
         {
             return context.Doctors.FirstOrDefault(x => x.Login.Login == login);
         }
-        public Doctor GetDoctorByID(int     doctorId)
+        public Doctor GetDoctorById(int doctorId)
         {
-            return context.Doctors.FirstOrDefault(x => x.DoctorID == doctorId);
+            return context.Doctors.FirstOrDefault(x => x.DoctorIs == doctorId);
         }
         public void DeletePatient(Patient patient)
         {

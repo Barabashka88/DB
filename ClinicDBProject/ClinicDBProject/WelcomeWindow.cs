@@ -23,9 +23,9 @@ namespace ClinicDBProject
         private void registerButton_Click(object sender, EventArgs e)
         {
             RegisterWindow form = new RegisterWindow(repository);
-            this.Hide();
+            Hide();
             form.ShowDialog();
-            this.Show();
+            Show();
         }
 
         private void loginButton_Click(object sender, EventArgs e)

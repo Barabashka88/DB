@@ -12,7 +12,7 @@ namespace Domain.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ResultID { get; set; }
+        public int ResultId { get; set; }
         public virtual Patient Patient { get; set; }
         public string Description { get; set; }
 
