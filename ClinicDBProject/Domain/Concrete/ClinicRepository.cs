@@ -37,7 +37,7 @@ namespace Domain.Concrete
         public IEnumerable<Appointment> GetAllAppointments()
         {
             var appointments = from appointment in context.Appointments select appointment;
-            return appointments;
+            return appointments.ToList();
         }
         public void AddPerson(Person person)
         {
@@ -47,6 +47,12 @@ namespace Domain.Concrete
         {
             context.Patients.Add(patient);
         }
+
+        public void AddApointment(Appointment apointment)
+        {
+            context.Appointments.Add(apointment);
+        }
+
         public void UpdatePatient(Patient patientObj)
         {
             context.Patients.Attach(patientObj);
@@ -66,6 +72,10 @@ namespace Domain.Concrete
         public Patient GetPatientById(int patientId)
         {
             return context.Patients.FirstOrDefault(x => x.PatientId == patientId);
+        }
+        public Patient GetPatientByPersonId(int personId)
+        {
+            return context.Patients.FirstOrDefault(x => x.Person.PersonId == personId);
         }
         public Doctor GetDoctorByLogin(string login)
         {

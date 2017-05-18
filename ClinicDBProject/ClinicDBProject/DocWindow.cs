@@ -17,7 +17,8 @@ namespace ClinicDBProject
         private LoginWindow loginWindow;
         private readonly ClinicRepository repository;
         public int docId;
-        private WelcomeWindow welcomeWindow;
+
+        private readonly WelcomeWindow welcomeWindow;
 
         public DocWindow(ClinicRepository repository)
         {
@@ -44,25 +45,32 @@ namespace ClinicDBProject
             patientsComboBox.SelectedIndex = -1;
         }
 
+        private void DataGridInitialize()
+        {
+            var query = from appoint in repository.GetAllAppointments()
+                where appoint.Patient.Person.PersonId == (int)patientsComboBox.SelectedValue
+                select new
+                {
+                    appoint.AppointmentId,
+                    Пацієнт = appoint.Patient.Person.FullName,
+                    Лікар = appoint.Doctor.Person.FullName,
+                    ДатаПрийому = appoint.Date,
+                    Опис = appoint.Description
+                };
+            appointmentsView.DataSource = query.ToList();
+            appointmentsView.Columns[0].Visible = false;
+            appointmentsView.Visible = true;
+            descriptionTextBox.Visible = true;
+            addDescriptionButton.Visible = true;
+            diagnosButton.Visible = true;
+        }
         private void patientsComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             if (patientsComboBox.SelectedIndex != -1)
             {
                 if (patientsComboBox.DisplayMember == "FullName")
                 {
-                    var query = from appoint in repository.GetAllAppointments()
-                        where appoint.Patient.Person.PersonId == (int) patientsComboBox.SelectedValue &&
-                              appoint.Doctor == repository.GetDoctorById(docId)
-                        select new
-                        {
-                            AppointmentId = appoint.AppointmentId,
-                            Пацієнт = appoint.Patient.Person.FullName,
-                            Лікар = appoint.Doctor.Person.FullName,
-                            ДатаПрийому = appoint.Date,
-                            Опис = appoint.Description
-                        };
-                    appointmentsView.DataSource = query.ToList();
-                    appointmentsView.Columns[0].Visible = false;
+                    DataGridInitialize();
                 }
             }
         }
@@ -75,6 +83,31 @@ namespace ClinicDBProject
         private void DocWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
             welcomeWindow.Show();
+        }
+
+        private void addDescriptionButton_Click(object sender, EventArgs e)
+        {
+            if (descriptionTextBox.Text!=null)
+            {
+                Appointment appointment = new Appointment
+                {
+                    Date = DateTime.Today,
+                    Description = descriptionTextBox.Text,
+                    Doctor = repository.GetDoctorById(docId),
+                    Patient = repository.GetPatientByPersonId((int)patientsComboBox.SelectedValue)
+                };
+                repository.AddApointment(appointment);
+                repository.Save();
+                DataGridInitialize();
+            }
+        }
+
+        private void diagnosButton_Click(object sender, EventArgs e)
+        {
+            DiagnosWindow form = new DiagnosWindow(repository);
+            Hide();
+            form.ShowDialog();
+            Show();
         }
     }
 }

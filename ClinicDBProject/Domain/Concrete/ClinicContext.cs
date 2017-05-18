@@ -19,7 +19,7 @@ namespace Domain.Concrete
         public DbSet<Analysis> Analyzes { get; set; }
         public DbSet<DocLogin> DocsLogins { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
-        public DbSet<AppointmentResult> AppointmentResultsP { get; set; }
+        public DbSet<AppointmentResult> AppointmentResults { get; set; }
 
         static ClinicContext()
         {
@@ -120,7 +120,6 @@ namespace Domain.Concrete
                 Patient = patient,
                 Date = DateTime.Today,
                 Description = "very bad"
-
             };
             context.Appointments.Add(appointment);
             context.Appointments.Add(appointment2);
