@@ -61,6 +61,12 @@
     <Compile Include="AddOrEditPatientForm.Designer.cs">
       <DependentUpon>AddOrEditPatientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DiagnosWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiagnosWindow.Designer.cs">
+      <DependentUpon>DiagnosWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="DoctorAccountWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddOrEditPatientForm.resx">
       <DependentUpon>AddOrEditPatientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiagnosWindow.resx">
+      <DependentUpon>DiagnosWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DocWindow.resx">
       <DependentUpon>DocWindow.cs</DependentUpon>
