@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain.Concrete;
-using Domain.Entities;
+
 namespace ClinicDBProject
 {
     public partial class RegisterWindow : Form
@@ -47,8 +41,7 @@ namespace ClinicDBProject
 
         private void addPatientButton_Click(object sender, EventArgs e)
         {
-            AddOrEditPatientForm form = new AddOrEditPatientForm(_repository);
-            form.Text = "Новий пацієнт";
+            AddOrEditPatientForm form = new AddOrEditPatientForm(_repository) {Text = "Новий пацієнт"};
             Hide();
             form.ShowDialog();
             Show();

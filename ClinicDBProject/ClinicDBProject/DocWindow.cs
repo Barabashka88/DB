@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain.Concrete;
 using Domain.Entities;
@@ -14,10 +8,9 @@ namespace ClinicDBProject
 {
     public partial class DocWindow : Form
     {
-        private LoginWindow _loginWindow;
         private readonly ClinicRepository _repository;
         public int DocId;
-        public int PatientId;
+        private int _patientId;
 
         private readonly WelcomeWindow _welcomeWindow;
 
@@ -26,11 +19,12 @@ namespace ClinicDBProject
             this._repository = repository;
             InitializeComponent();
         }
-        public DocWindow(ClinicRepository repository, WelcomeWindow welcomeWindow, LoginWindow loginWindow) : this(repository)
+
+        public DocWindow(ClinicRepository repository, WelcomeWindow welcomeWindow) : this(repository)
         {
             this._welcomeWindow = welcomeWindow;
-            this._loginWindow = loginWindow;
         }
+
         public void InitializeForm()
         {
             Doctor doc = _repository.GetDoctorById(DocId);
@@ -58,7 +52,7 @@ namespace ClinicDBProject
                     ДатаПрийому = appoint.Date,
                     Опис = appoint.Description
                 };
-            PatientId = _repository.GetPatientByPersonId((int)patientsComboBox.SelectedValue).PatientId;
+            _patientId = _repository.GetPatientByPersonId((int)patientsComboBox.SelectedValue).PatientId;
             appointmentsView.DataSource = query.ToList();
             appointmentsView.Columns[0].Visible = false;
             appointmentsView.Visible = true;
@@ -109,7 +103,7 @@ namespace ClinicDBProject
         {
             DiagnosWindow form = new DiagnosWindow(_repository);
             Hide();
-            form.PatientId = PatientId;
+            form.PatientId = _patientId;
             form.Initialize();
             form.ShowDialog();
             Show();

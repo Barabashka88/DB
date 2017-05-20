@@ -1,24 +1,18 @@
 ﻿using Domain.Concrete;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClinicDBProject
 {
     public partial class LoginWindow : Form
     {
-        public ClinicRepository Repository;
+        private readonly ClinicRepository _repository;
         private readonly WelcomeWindow _welcomeWindow;
 
         public LoginWindow(ClinicRepository repository)
         {
-            this.Repository = repository;
+            _repository = repository;
             InitializeComponent();
         }
 
@@ -29,15 +23,15 @@ namespace ClinicDBProject
 
         private void logInButton_Click(object sender, EventArgs e)
         {
-            var query = (from logins in Repository.GetAllLogins()
-                         join doc in Repository.GetAllDoctors() on logins.Doctor equals doc
+            var query = (from logins in _repository.GetAllLogins()
+                         join doc in _repository.GetAllDoctors() on logins.Doctor equals doc
                          select logins).ToList();
             if (query[0].Password == passwordTextBox.Text && query[0].Login == loginTextBox.Text)
             {
                 DocWindow form =
-                    new DocWindow(Repository, _welcomeWindow, this)
+                    new DocWindow(_repository, _welcomeWindow)
                     {
-                        DocId = Repository.GetDoctorByLogin(query[0].Login).DoctorIs
+                        DocId = _repository.GetDoctorByLogin(query[0].Login).DoctorIs
                     };
                 form.InitializeForm();
                 _welcomeWindow.Hide();
