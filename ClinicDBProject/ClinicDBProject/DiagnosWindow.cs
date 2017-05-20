@@ -13,19 +13,19 @@ namespace ClinicDBProject
 {
     public partial class DiagnosWindow : Form
     {
-        private ClinicRepository repository;
-        public int patientID;
+        private readonly ClinicRepository _repository;
+        public int PatientId;
 
         public DiagnosWindow(ClinicRepository repository)
         {
-            this.repository = repository;
+            this._repository = repository;
 
             InitializeComponent();
         }
 
         public void Initialize ()
         {
-            patientLabel.Text = repository.GetPatientById(patientID).Person.FullName;
+            patientLabel.Text = _repository.GetPatientById(PatientId).Person.FullName;
             label3.Location = new Point(patientLabel.Location.X + patientLabel.Size.Width, patientLabel.Location.Y);
         }
         private void label2_Click(object sender, EventArgs e)

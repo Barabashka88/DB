@@ -13,17 +13,17 @@ namespace ClinicDBProject
 {
     public partial class RegisterWindow : Form
     {
-        private readonly ClinicRepository repository;
+        private readonly ClinicRepository _repository;
         public RegisterWindow(ClinicRepository repository)
         {
-            this.repository = repository;
+            this._repository = repository;
             InitializeComponent();
             InitializeTable();
         }
         public void InitializeTable()
         {
-            var query = (from patient in repository.GetAllPatients()
-                         join person in repository.GetAllPeople() on patient.Person.PersonId equals person.PersonId
+            var query = (from patient in _repository.GetAllPatients()
+                         join person in _repository.GetAllPeople() on patient.Person.PersonId equals person.PersonId
                          select new
                          {
                              Імя = patient.Person.FirstName,
@@ -47,7 +47,7 @@ namespace ClinicDBProject
 
         private void addPatientButton_Click(object sender, EventArgs e)
         {
-            AddOrEditPatientForm form = new AddOrEditPatientForm(repository);
+            AddOrEditPatientForm form = new AddOrEditPatientForm(_repository);
             form.Text = "Новий пацієнт";
             Hide();
             form.ShowDialog();
@@ -59,11 +59,11 @@ namespace ClinicDBProject
         {
             if (patientsView.SelectedRows.Count == 1)
             {
-                AddOrEditPatientForm form = new AddOrEditPatientForm(repository);
+                AddOrEditPatientForm form = new AddOrEditPatientForm(_repository);
 
                 form.Text = "Змінити данні";
-                form.patientID = Convert.ToInt32(patientsView.SelectedRows[0].Cells[8].Value);
-                var patient = repository.GetPatientById(form.patientID);
+                form.PatientId = Convert.ToInt32(patientsView.SelectedRows[0].Cells[8].Value);
+                var patient = _repository.GetPatientById(form.PatientId);
                 form.firstNameTextBox.Text = patient.Person.FirstName;
                 form.lastNameTextBox.Text = patient.Person.LastName;
                 form.birthDateTimePicker.Value = DateTime.Parse(patient.Person.DateOfBirth.ToString());
@@ -75,7 +75,7 @@ namespace ClinicDBProject
                 Hide();
                 form.ShowDialog();
                 Show();
-                repository.Save();
+                _repository.Save();
                InitializeTable();
             }
         }
@@ -87,10 +87,10 @@ namespace ClinicDBProject
                 foreach (DataGridViewRow item in patientsView.SelectedRows)
                 {
                     int id = int.Parse(item.Cells[8].Value.ToString());
-                    var query = (from patient in repository.GetAllPatients() where patient.PatientId == id select patient).ToList();
-                    repository.DeletePerson(query[0].Person);
-                    repository.DeletePatient(query[0]);
-                    repository.Save();
+                    var query = (from patient in _repository.GetAllPatients() where patient.PatientId == id select patient).ToList();
+                    _repository.DeletePerson(query[0].Person);
+                    _repository.DeletePatient(query[0]);
+                    _repository.Save();
                 }
             }
             InitializeTable();

@@ -13,34 +13,34 @@ namespace ClinicDBProject
 {
     public partial class LoginWindow : Form
     {
-        public ClinicRepository repository;
-        private WelcomeWindow welcomeWindow;
+        public ClinicRepository Repository;
+        private readonly WelcomeWindow _welcomeWindow;
 
         public LoginWindow(ClinicRepository repository)
         {
-            this.repository = repository;
+            this.Repository = repository;
             InitializeComponent();
         }
 
         public LoginWindow(ClinicRepository repository, WelcomeWindow welcomeWindow) : this(repository)
         {
-            this.welcomeWindow = welcomeWindow;
+            this._welcomeWindow = welcomeWindow;
         }
 
         private void logInButton_Click(object sender, EventArgs e)
         {
-            var query = (from logins in repository.GetAllLogins()
-                         join doc in repository.GetAllDoctors() on logins.Doctor equals doc
+            var query = (from logins in Repository.GetAllLogins()
+                         join doc in Repository.GetAllDoctors() on logins.Doctor equals doc
                          select logins).ToList();
             if (query[0].Password == passwordTextBox.Text && query[0].Login == loginTextBox.Text)
             {
                 DocWindow form =
-                    new DocWindow(repository, welcomeWindow, this)
+                    new DocWindow(Repository, _welcomeWindow, this)
                     {
-                        docId = repository.GetDoctorByLogin(query[0].Login).DoctorIs
+                        DocId = Repository.GetDoctorByLogin(query[0].Login).DoctorIs
                     };
                 form.InitializeForm();
-                welcomeWindow.Hide();
+                _welcomeWindow.Hide();
                 Hide();
                 form.ShowDialog();
             }

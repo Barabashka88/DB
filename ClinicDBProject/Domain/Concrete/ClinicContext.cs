@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Domain.Entities;
-using Domain.Concrete;
 
 namespace Domain.Concrete
 {
@@ -41,7 +36,7 @@ namespace Domain.Concrete
     {
         protected override void Seed(ClinicContext context)
         {
-            Person person1 = new Person
+            var person1 = new Person
             {
                 FirstName = "Валерій",
                 LastName = "Пилипенко",
@@ -49,7 +44,7 @@ namespace Domain.Concrete
                 DateOfBirth = new DateTime(1997, 12, 03),
                 PhoneNumber = "0938737355"
             };
-            Person person2 = new Person
+            var person2 = new Person
             {
                 FirstName = "Сергій",
                 LastName = "Савка",
@@ -59,7 +54,7 @@ namespace Domain.Concrete
             };
             context.Persons.Add(person1);
             context.Persons.Add(person2);
-            Patient patient = new Patient
+            var patient = new Patient
             {
                 Height = 180,
                 Weight = 90,
@@ -67,13 +62,13 @@ namespace Domain.Concrete
                 Person = person1
             };
             context.Patients.Add(patient);
-            Doctor doctor = new Doctor
+            var doctor = new Doctor
             {
                 Person = person2,
                 Specialization = "Хірург"
             };
             context.Doctors.Add(doctor);
-            DocLogin login = new DocLogin
+            var login = new DocLogin
             {
                 Doctor = doctor,
                 Login = "Serg",
@@ -81,32 +76,32 @@ namespace Domain.Concrete
             };
             context.DocsLogins.Add(login);
 
-            Analysis analys1 = new Analysis
+            var analys1 = new Analysis
             {
                 Name = "Обширний аналі крові",
                 Price = 300
             };
             context.Analyzes.Add(analys1);
 
-            Analysis analys2 = new Analysis
+            var analys2 = new Analysis
             {
                 Name = "МРТ",
                 Price = 7000
             };
             context.Analyzes.Add(analys2);
-            Drug drug1 = new Drug
+            var drug1 = new Drug
             {
                 Name = "Вікодин",
                 Price = 500
             };
             context.Drugs.Add(drug1);
-            Drug drug2 = new Drug
+            var drug2 = new Drug
             {
                 Name = "Лікарська марихуана",
                 Price = 800
             };
             context.Drugs.Add(drug2);
-            Appointment appointment = new Appointment
+            var appointment = new Appointment
             {
                 Doctor = doctor,
                 Patient = patient,
@@ -114,7 +109,7 @@ namespace Domain.Concrete
                 Description = "so bad"
            
             };
-            Appointment appointment2 = new Appointment
+            var appointment2 = new Appointment
             {
                 Doctor = doctor,
                 Patient = patient,

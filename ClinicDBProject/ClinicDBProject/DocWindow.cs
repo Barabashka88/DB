@@ -14,31 +14,31 @@ namespace ClinicDBProject
 {
     public partial class DocWindow : Form
     {
-        private LoginWindow loginWindow;
-        private readonly ClinicRepository repository;
-        public int docId;
-        public int patientId;
+        private LoginWindow _loginWindow;
+        private readonly ClinicRepository _repository;
+        public int DocId;
+        public int PatientId;
 
-        private readonly WelcomeWindow welcomeWindow;
+        private readonly WelcomeWindow _welcomeWindow;
 
         public DocWindow(ClinicRepository repository)
         {
-            this.repository = repository;
+            this._repository = repository;
             InitializeComponent();
         }
         public DocWindow(ClinicRepository repository, WelcomeWindow welcomeWindow, LoginWindow loginWindow) : this(repository)
         {
-            this.welcomeWindow = welcomeWindow;
-            this.loginWindow = loginWindow;
+            this._welcomeWindow = welcomeWindow;
+            this._loginWindow = loginWindow;
         }
         public void InitializeForm()
         {
-            Doctor doc = repository.GetDoctorById(docId);
+            Doctor doc = _repository.GetDoctorById(DocId);
             doctorNameLabel.Text = doc.Person.FirstName;
             doctorSurnameLabel.Text = doc.Person.LastName;
             doctorSpecializationLabel.Text = doc.Specialization;
-            var query = from people in repository.GetAllPeople()
-                        join patient in repository.GetAllPatients() on people.PersonId equals patient.Person.PersonId
+            var query = from people in _repository.GetAllPeople()
+                        join patient in _repository.GetAllPatients() on people.PersonId equals patient.Person.PersonId
                         select people;
             patientsComboBox.DataSource = query.ToList();
             patientsComboBox.ValueMember = "PersonId";
@@ -48,7 +48,7 @@ namespace ClinicDBProject
 
         private void DataGridInitialize()
         {
-            var query = from appoint in repository.GetAllAppointments()
+            var query = from appoint in _repository.GetAllAppointments()
                 where appoint.Patient.Person.PersonId == (int)patientsComboBox.SelectedValue
                 select new
                 {
@@ -58,7 +58,7 @@ namespace ClinicDBProject
                     ДатаПрийому = appoint.Date,
                     Опис = appoint.Description
                 };
-            patientId = repository.GetPatientByPersonId((int)patientsComboBox.SelectedValue).PatientId;
+            PatientId = _repository.GetPatientByPersonId((int)patientsComboBox.SelectedValue).PatientId;
             appointmentsView.DataSource = query.ToList();
             appointmentsView.Columns[0].Visible = false;
             appointmentsView.Visible = true;
@@ -85,7 +85,7 @@ namespace ClinicDBProject
 
         private void DocWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
-            welcomeWindow.Show();
+            _welcomeWindow.Show();
         }
 
         private void addDescriptionButton_Click(object sender, EventArgs e)
@@ -96,20 +96,20 @@ namespace ClinicDBProject
                 {
                     Date = DateTime.Today,
                     Description = descriptionTextBox.Text,
-                    Doctor = repository.GetDoctorById(docId),
-                    Patient = repository.GetPatientByPersonId((int)patientsComboBox.SelectedValue)
+                    Doctor = _repository.GetDoctorById(DocId),
+                    Patient = _repository.GetPatientByPersonId((int)patientsComboBox.SelectedValue)
                 };
-                repository.AddApointment(appointment);
-                repository.Save();
+                _repository.AddApointment(appointment);
+                _repository.Save();
                 DataGridInitialize();
             }
         }
 
         private void diagnosButton_Click(object sender, EventArgs e)
         {
-            DiagnosWindow form = new DiagnosWindow(repository);
+            DiagnosWindow form = new DiagnosWindow(_repository);
             Hide();
-            form.patientID = patientId;
+            form.PatientId = PatientId;
             form.Initialize();
             form.ShowDialog();
             Show();

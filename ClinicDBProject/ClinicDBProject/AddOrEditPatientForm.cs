@@ -16,11 +16,11 @@ namespace ClinicDBProject
 {
     public partial class AddOrEditPatientForm : Form
     {
-        public ClinicRepository repository;
-        public int patientID;
+        private readonly ClinicRepository _repository;
+        public int PatientId;
         public AddOrEditPatientForm(ClinicRepository repository )
         {
-            this.repository = repository;
+            this._repository = repository;
             InitializeComponent();
             List<int> list = new List<int> { 1, 2, 3, 4 };
             BloodComboBox.DataSource = list;
@@ -53,14 +53,14 @@ namespace ClinicDBProject
                     Height = Convert.ToInt32(heightTextBox.Text),
                     Weight = double.Parse(weightTextBox.Text)
                 };
-                repository.AddPerson(person);
-                repository.AddPatient(patient);
+                _repository.AddPerson(person);
+                _repository.AddPatient(patient);
                 MessageBox.Show("Пацієнта додано");
             }
             else
             {
-                patient = repository.GetPatientById(patientID);
-                person = repository.GetPersonById(patient.Person.PersonId);
+                patient = _repository.GetPatientById(PatientId);
+                person = _repository.GetPersonById(patient.Person.PersonId);
                 person.FirstName = firstNameTextBox.Text;
                 person.LastName = lastNameTextBox.Text;
                 person.PhoneNumber = PhoneTextBox.Text;
@@ -71,11 +71,11 @@ namespace ClinicDBProject
                 patient.Height = Convert.ToInt32(heightTextBox.Text);
                 patient.Weight = double.Parse(weightTextBox.Text);
 
-                repository.UpdatePerson(person);
-                repository.UpdatePatient(patient);
+                _repository.UpdatePerson(person);
+                _repository.UpdatePatient(patient);
                 MessageBox.Show("Пацієнта відредаговано");
             }
-            repository.Save();
+            _repository.Save();
             Close();
         }
     }
