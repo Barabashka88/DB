@@ -17,6 +17,7 @@ namespace ClinicDBProject
         private LoginWindow loginWindow;
         private readonly ClinicRepository repository;
         public int docId;
+        public int patientId;
 
         private readonly WelcomeWindow welcomeWindow;
 
@@ -57,6 +58,7 @@ namespace ClinicDBProject
                     ДатаПрийому = appoint.Date,
                     Опис = appoint.Description
                 };
+            patientId = repository.GetPatientByPersonId((int)patientsComboBox.SelectedValue).PatientId;
             appointmentsView.DataSource = query.ToList();
             appointmentsView.Columns[0].Visible = false;
             appointmentsView.Visible = true;
@@ -70,6 +72,7 @@ namespace ClinicDBProject
             {
                 if (patientsComboBox.DisplayMember == "FullName")
                 {
+                    
                     DataGridInitialize();
                 }
             }
@@ -106,6 +109,8 @@ namespace ClinicDBProject
         {
             DiagnosWindow form = new DiagnosWindow(repository);
             Hide();
+            form.patientID = patientId;
+            form.Initialize();
             form.ShowDialog();
             Show();
         }

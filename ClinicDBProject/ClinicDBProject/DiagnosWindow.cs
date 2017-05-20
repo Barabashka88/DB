@@ -14,23 +14,41 @@ namespace ClinicDBProject
     public partial class DiagnosWindow : Form
     {
         private ClinicRepository repository;
-
-        public DiagnosWindow()
-        {
-            InitializeComponent();
-        }
+        public int patientID;
 
         public DiagnosWindow(ClinicRepository repository)
         {
             this.repository = repository;
+
+            InitializeComponent();
         }
 
+        public void Initialize ()
+        {
+            patientLabel.Text = repository.GetPatientById(patientID).Person.FullName;
+            label3.Location = new Point(patientLabel.Location.X + patientLabel.Size.Width, patientLabel.Location.Y);
+        }
         private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DiagnosWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }
