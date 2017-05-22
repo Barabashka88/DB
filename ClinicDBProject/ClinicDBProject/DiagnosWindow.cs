@@ -12,15 +12,25 @@ namespace ClinicDBProject
 
         public DiagnosWindow(ClinicRepository repository)
         {
-            this._repository = repository;
+            _repository = repository;
 
             InitializeComponent();
         }
 
-        public void Initialize ()
+        public void Initialize()
         {
             patientLabel.Text = _repository.GetPatientById(PatientId).Person.FullName;
             label3.Location = new Point(patientLabel.Location.X + patientLabel.Size.Width, patientLabel.Location.Y);
+            drugComboBox.DataSource = _repository.GetAllDrugs();
+            drugComboBox.ValueMember = "DrugId";
+            drugComboBox.DisplayMember = "Name";
+            drugComboBox.SelectedIndex = -1;
+
+            analysisComboBox.DataSource = _repository.GetAllAnalyses();
+            analysisComboBox.ValueMember = "AnalysisId";
+            analysisComboBox.DisplayMember = "Name";
+            analysisComboBox.SelectedIndex = -1;
+
         }
         private void label2_Click(object sender, EventArgs e)
         {
