@@ -89,8 +89,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Mistral", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+
             this.label5.Location = new System.Drawing.Point(348, 329);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 33);
             this.label5.TabIndex = 4;
@@ -111,6 +113,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(354, 364);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(160, 24);
             this.comboBox2.TabIndex = 6;
