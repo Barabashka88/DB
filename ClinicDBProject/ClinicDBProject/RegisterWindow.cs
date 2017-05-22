@@ -10,7 +10,7 @@ namespace ClinicDBProject
         private readonly ClinicRepository _repository;
         public RegisterWindow(ClinicRepository repository)
         {
-            this._repository = repository;
+            _repository = repository;
             InitializeComponent();
             InitializeTable();
         }

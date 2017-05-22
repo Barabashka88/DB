@@ -71,6 +71,12 @@ namespace Domain.Concrete
             _context.Entry(personObj).State = EntityState.Modified;
             Save();
         }
+        public void UpdateAppointmentResult(AppointmentResult resultObj)
+        {
+            _context.AppointmentResults.Attach(resultObj);
+            _context.Entry(resultObj).State = EntityState.Modified;
+            Save();
+        }
         public Person GetPersonById(int personId)
         {
             return _context.Persons.FirstOrDefault(x => x.PersonId == personId);
@@ -91,6 +97,11 @@ namespace Domain.Concrete
         {
             return _context.Doctors.FirstOrDefault(x => x.DoctorIs == doctorId);
         }
+        public AppointmentResult GetResultByPatientId(int patientId)
+        {
+            return _context.AppointmentResults.FirstOrDefault(x => x.Patient.PatientId == patientId);
+        }
+        
         public void DeletePatient(Patient patient)
         {
             _context.Patients.Remove(patient);

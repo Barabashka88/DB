@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using Domain.Entities;
+using System.Collections.Generic;
 
 namespace Domain.Concrete
 {
@@ -119,6 +120,16 @@ namespace Domain.Concrete
             context.Appointments.Add(appointment);
             context.Appointments.Add(appointment2);
 
+            var appresult = new AppointmentResult
+            {
+                Patient = patient,
+                Diagnos = "Ви в дерьме, сударь",
+                Analyzes = new List<Analysis>
+                {
+                    analys1
+                }
+            };
+            context.AppointmentResults.Add(appresult);
             base.Seed(context);
         }
     }

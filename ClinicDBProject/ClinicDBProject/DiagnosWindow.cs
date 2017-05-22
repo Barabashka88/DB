@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Domain.Concrete;
+using Domain.Entities;
 
 namespace ClinicDBProject
 {
@@ -30,30 +31,24 @@ namespace ClinicDBProject
             analysisComboBox.ValueMember = "AnalysisId";
             analysisComboBox.DisplayMember = "Name";
             analysisComboBox.SelectedIndex = -1;
-
-        }
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
+            if (_repository.GetResultByPatientId(PatientId) != null)
+            {
+                diagnosTextBox.Text = _repository.GetResultByPatientId(PatientId).Diagnos;
+            }
 
         }
 
-        private void DiagnosWindow_Load(object sender, EventArgs e)
+        private void backButton_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void okButton_Click(object sender, EventArgs e)
         {
+            AppointmentResult result = _repository.GetResultByPatientId(PatientId);
+            //result.Analyzes.Add(_repository.geta)
 
-        }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
 
         }
     }

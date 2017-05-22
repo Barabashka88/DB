@@ -12,17 +12,17 @@ namespace ClinicDBProject
         public int DocId;
         private int _patientId;
 
-        private readonly WelcomeWindow _welcomeWindow;
+        public readonly WelcomeWindow _welcomeWindow;
 
         public DocWindow(ClinicRepository repository)
         {
-            this._repository = repository;
+            _repository = repository;
             InitializeComponent();
         }
 
         public DocWindow(ClinicRepository repository, WelcomeWindow welcomeWindow) : this(repository)
         {
-            this._welcomeWindow = welcomeWindow;
+            _welcomeWindow = welcomeWindow;
         }
 
         public void InitializeForm()
