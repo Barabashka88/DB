@@ -18,7 +18,7 @@ namespace ClinicDBProject
 
         public LoginWindow(ClinicRepository repository, WelcomeWindow welcomeWindow) : this(repository)
         {
-            this._welcomeWindow = welcomeWindow;
+            _welcomeWindow = welcomeWindow;
         }
 
         private void logInButton_Click(object sender, EventArgs e)

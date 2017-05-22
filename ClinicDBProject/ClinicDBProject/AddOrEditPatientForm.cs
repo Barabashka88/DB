@@ -12,7 +12,7 @@ namespace ClinicDBProject
         public int PatientId;
         public AddOrEditPatientForm(ClinicRepository repository )
         {
-            this._repository = repository;
+            _repository = repository;
             InitializeComponent();
             List<int> list = new List<int> { 1, 2, 3, 4 };
             BloodComboBox.DataSource = list;
