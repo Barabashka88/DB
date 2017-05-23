@@ -28,7 +28,10 @@ namespace ClinicDBProject
 
         private void appointmentsButton_Click(object sender, EventArgs e)
         {
-
+            var form = new AboutAllWindow(_repository);
+            Hide();
+            form.ShowDialog();
+            Show();
         }
     }
 }

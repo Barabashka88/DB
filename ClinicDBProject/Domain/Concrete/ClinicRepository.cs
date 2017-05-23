@@ -34,6 +34,11 @@ namespace Domain.Concrete
             var appointments = from appointment in _context.Appointments select appointment;
             return appointments.ToList();
         }
+        public IEnumerable<AppointmentResult> GetAllAppointmentResults()
+        {
+            var appointments = from appointment in _context.AppointmentResults select appointment;
+            return appointments.ToList();
+        }
         public IEnumerable<Drug> GetAllDrugs()
         {
             var drugs = from drug in _context.Drugs select drug;

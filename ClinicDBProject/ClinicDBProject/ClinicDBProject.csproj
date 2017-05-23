@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutAllWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutAllWindow.Designer.cs">
+      <DependentUpon>AboutAllWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddOrEditPatientForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutAllWindow.resx">
+      <DependentUpon>AboutAllWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddOrEditPatientForm.resx">
       <DependentUpon>AddOrEditPatientForm.cs</DependentUpon>
     </EmbeddedResource>

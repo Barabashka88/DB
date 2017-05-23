@@ -14,7 +14,6 @@ namespace ClinicDBProject
         public DiagnosWindow(ClinicRepository repository)
         {
             _repository = repository;
-
             InitializeComponent();
         }
 
@@ -32,10 +31,7 @@ namespace ClinicDBProject
             analysisComboBox.DisplayMember = "Name";
             analysisComboBox.SelectedIndex = -1;
             if (_repository.GetResultByPatientId(PatientId) != null)
-            {
                 diagnosTextBox.Text = _repository.GetResultByPatientId(PatientId).Diagnos;
-            }
-
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -46,8 +42,10 @@ namespace ClinicDBProject
         private void okButton_Click(object sender, EventArgs e)
         {
             AppointmentResult result = _repository.GetResultByPatientId(PatientId);
-            result.Analyzes.Add(_repository.GetAnalysisById((int) analysisComboBox.SelectedValue));
-            result.Drugs.Add(_repository.GetDrugsById((int)drugComboBox.SelectedValue));
+            if (analysisComboBox.SelectedIndex != -1)
+                result.Analyzes.Add(_repository.GetAnalysisById((int)analysisComboBox.SelectedValue));
+            if (drugComboBox.SelectedIndex != -1)
+                result.Drugs.Add(_repository.GetDrugsById((int)drugComboBox.SelectedValue));
             result.Diagnos = diagnosTextBox.Text;
             _repository.UpdateAppointmentResult(result);
             Close();
