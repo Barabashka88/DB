@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.doctorNameLabel = new System.Windows.Forms.Label();
             this.doctorSurnameLabel = new System.Windows.Forms.Label();
             this.doctorSpecializationLabel = new System.Windows.Forms.Label();
@@ -40,7 +40,15 @@
             this.addDescriptionButton = new System.Windows.Forms.Button();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.diagnosButton = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.diagnosDataGrid = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsView)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.diagnosDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // doctorNameLabel
@@ -125,27 +133,28 @@
             this.appointmentsView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.appointmentsView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.appointmentsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.appointmentsView.DefaultCellStyle = dataGridViewCellStyle1;
-            this.appointmentsView.Location = new System.Drawing.Point(12, 132);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.appointmentsView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.appointmentsView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.appointmentsView.Location = new System.Drawing.Point(3, 3);
             this.appointmentsView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.appointmentsView.Name = "appointmentsView";
             this.appointmentsView.ReadOnly = true;
             this.appointmentsView.RowTemplate.Height = 24;
-            this.appointmentsView.Size = new System.Drawing.Size(401, 174);
+            this.appointmentsView.Size = new System.Drawing.Size(387, 202);
             this.appointmentsView.TabIndex = 7;
             this.appointmentsView.Visible = false;
             // 
             // addDescriptionButton
             // 
             this.addDescriptionButton.Font = new System.Drawing.Font("Mistral", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addDescriptionButton.Location = new System.Drawing.Point(419, 245);
+            this.addDescriptionButton.Location = new System.Drawing.Point(419, 277);
             this.addDescriptionButton.Name = "addDescriptionButton";
             this.addDescriptionButton.Size = new System.Drawing.Size(270, 61);
             this.addDescriptionButton.TabIndex = 8;
@@ -160,14 +169,14 @@
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.descriptionTextBox.Size = new System.Drawing.Size(270, 107);
+            this.descriptionTextBox.Size = new System.Drawing.Size(270, 139);
             this.descriptionTextBox.TabIndex = 9;
             this.descriptionTextBox.Visible = false;
             // 
             // diagnosButton
             // 
             this.diagnosButton.Font = new System.Drawing.Font("Mistral", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diagnosButton.Location = new System.Drawing.Point(228, 312);
+            this.diagnosButton.Location = new System.Drawing.Point(225, 351);
             this.diagnosButton.Name = "diagnosButton";
             this.diagnosButton.Size = new System.Drawing.Size(263, 66);
             this.diagnosButton.TabIndex = 10;
@@ -176,15 +185,61 @@
             this.diagnosButton.Visible = false;
             this.diagnosButton.Click += new System.EventHandler(this.diagnosButton_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 108);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(401, 237);
+            this.tabControl1.TabIndex = 11;
+            this.tabControl1.Visible = false;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.appointmentsView);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(393, 208);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Прийоми";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.diagnosDataGrid);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(393, 208);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Діагнози";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // diagnosDataGrid
+            // 
+            this.diagnosDataGrid.AllowUserToAddRows = false;
+            this.diagnosDataGrid.AllowUserToDeleteRows = false;
+            this.diagnosDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.diagnosDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.diagnosDataGrid.Location = new System.Drawing.Point(3, 3);
+            this.diagnosDataGrid.Name = "diagnosDataGrid";
+            this.diagnosDataGrid.ReadOnly = true;
+            this.diagnosDataGrid.RowTemplate.Height = 24;
+            this.diagnosDataGrid.Size = new System.Drawing.Size(387, 202);
+            this.diagnosDataGrid.TabIndex = 0;
+            // 
             // DocWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(701, 460);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.diagnosButton);
             this.Controls.Add(this.descriptionTextBox);
             this.Controls.Add(this.addDescriptionButton);
-            this.Controls.Add(this.appointmentsView);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.label1);
@@ -197,6 +252,10 @@
             this.Text = "DocWindow";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DocWindow_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsView)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.diagnosDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,5 +274,9 @@
         private System.Windows.Forms.Button addDescriptionButton;
         private System.Windows.Forms.TextBox descriptionTextBox;
         private System.Windows.Forms.Button diagnosButton;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView diagnosDataGrid;
     }
 }

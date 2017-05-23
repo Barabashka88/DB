@@ -59,6 +59,7 @@ namespace ClinicDBProject
             descriptionTextBox.Visible = true;
             addDescriptionButton.Visible = true;
             diagnosButton.Visible = true;
+            tabControl1.Visible = true;
         }
         private void patientsComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -96,6 +97,7 @@ namespace ClinicDBProject
                 _repository.AddApointment(appointment);
                 _repository.Save();
                 DataGridInitialize();
+                descriptionTextBox.Clear();
             }
         }
 

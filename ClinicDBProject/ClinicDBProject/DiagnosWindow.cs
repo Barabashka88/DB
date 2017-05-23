@@ -46,10 +46,11 @@ namespace ClinicDBProject
         private void okButton_Click(object sender, EventArgs e)
         {
             AppointmentResult result = _repository.GetResultByPatientId(PatientId);
-            //result.Analyzes.Add(_repository.geta)
-
-
-
+            result.Analyzes.Add(_repository.GetAnalysisById((int) analysisComboBox.SelectedValue));
+            result.Drugs.Add(_repository.GetDrugsById((int)drugComboBox.SelectedValue));
+            result.Diagnos = diagnosTextBox.Text;
+            _repository.UpdateAppointmentResult(result);
+            Close();
         }
     }
 }

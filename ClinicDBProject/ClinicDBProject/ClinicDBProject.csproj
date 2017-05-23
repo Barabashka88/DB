@@ -67,12 +67,6 @@
     <Compile Include="DiagnosWindow.Designer.cs">
       <DependentUpon>DiagnosWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="DoctorAccountWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DoctorAccountWindow.Designer.cs">
-      <DependentUpon>DoctorAccountWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="DocWindow.cs">
       <SubType>Form</SubType>
     </Compile>

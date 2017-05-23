@@ -101,7 +101,14 @@ namespace Domain.Concrete
         {
             return _context.AppointmentResults.FirstOrDefault(x => x.Patient.PatientId == patientId);
         }
-        
+        public Analysis GetAnalysisById(int analysisId)
+        {
+            return _context.Analyzes.FirstOrDefault(x => x.AnalysisId == analysisId);
+        }
+        public Drug GetDrugsById(int drugId)
+        {
+            return _context.Drugs.FirstOrDefault(x => x.DrugId == drugId);
+        }
         public void DeletePatient(Patient patient)
         {
             _context.Patients.Remove(patient);
