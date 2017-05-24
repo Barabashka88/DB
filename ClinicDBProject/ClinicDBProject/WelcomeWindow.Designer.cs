@@ -81,6 +81,7 @@
             this.MaximizeBox = false;
             this.Name = "WelcomeWindow";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.WelcomeWindow_Load);
             this.ResumeLayout(false);
 
         }

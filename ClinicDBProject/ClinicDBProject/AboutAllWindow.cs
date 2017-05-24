@@ -61,9 +61,10 @@ namespace ClinicDBProject
             dataGridView6.DataSource = (from res in _repository.GetAllAppointmentResults() select new
             {
                 Пацієнт = res.Patient.Person.FullName,
-                Ліки = res.Drugs.ToString(),
-                Аналізи =res.Analyzes.ToList().ToString(),
-                Діагноз = res.Diagnos
+                Ліки = res.GetAllDrugs(),
+                Аналізи = res.GetAllAnalisis(),
+                Діагноз = res.Diagnos,
+                Ціна = (res.GetAnalisisPrice() + res.GetDrugPrice()).ToString()
             }).ToList();
         }
     }

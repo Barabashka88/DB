@@ -6,7 +6,7 @@ namespace ClinicDBProject
 {
     public partial class WelcomeWindow : Form
     {
-        private readonly ClinicRepository _repository = new ClinicRepository();
+        private  ClinicRepository _repository = new ClinicRepository();
         public WelcomeWindow()
         {
             InitializeComponent();
@@ -32,6 +32,11 @@ namespace ClinicDBProject
             Hide();
             form.ShowDialog();
             Show();
+        }
+
+        private void WelcomeWindow_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Domain.Concrete
 {
     public class ClinicRepository
     {
-        private readonly ClinicContext _context = new ClinicContext();
+        public readonly ClinicContext _context = new ClinicContext();
 
         public IEnumerable<Patient> GetAllPatients()
         {

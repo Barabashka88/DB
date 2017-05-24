@@ -60,8 +60,8 @@ namespace ClinicDBProject
                           select new
                           {
                               Пацієнт = res.Patient.Person.FullName,
-                              //Ліки = res.Drugs.ToString(),
-                              //Аналізи = res.Analyzes.ToList().ToString(),
+                              Ліки = res.GetAllDrugs(),
+                              Аналізи = res.GetAllAnalisis(),
                               Діагноз = res.Diagnos
                           });
             var q = (from a in _repository.GetAllAppointmentResults() select a).ToList();

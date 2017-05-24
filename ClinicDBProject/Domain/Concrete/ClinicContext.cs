@@ -123,7 +123,7 @@ namespace Domain.Concrete
             var appresult = new AppointmentResult
             {
                 Patient = patient,
-                Diagnos = "Ви в дерьме, сударь",
+                Diagnos = "Гепатит А",
                 Analyzes = new List<Analysis>
                 {
                     analys1
