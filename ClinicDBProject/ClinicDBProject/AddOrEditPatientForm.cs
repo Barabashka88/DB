@@ -28,6 +28,8 @@ namespace ClinicDBProject
         {            
             Person person;
             Patient patient;
+            AppointmentResult result;
+            Appointment app;
             if (Text == "Новий пацієнт")
             {
                 person = new Person
@@ -45,8 +47,17 @@ namespace ClinicDBProject
                     Height = Convert.ToInt32(heightTextBox.Text),
                     Weight = double.Parse(weightTextBox.Text)
                 };
+                
                 _repository.AddPerson(person);
                 _repository.AddPatient(patient);
+                result = new AppointmentResult
+                {
+                    Patient = patient,
+                    Analyzes = new List<Analysis>(),
+                    Drugs = new List<Drug>()
+                };
+                _repository.AddApointmentResult(result);
+               
                 MessageBox.Show("Пацієнта додано");
             }
             else

@@ -18,28 +18,37 @@ namespace Domain.Entities
         public string GetAllDrugs()
         {
             StringBuilder result = new StringBuilder();
-            foreach (var s in Drugs)
+            if (Drugs != null)
             {
-                result.Append($"{s.Name},");
+                foreach (var s in Drugs)
+                {
+                    result.Append($"{s.Name},");
+                }
+
+                if (!string.IsNullOrEmpty(result.ToString()))
+                    result = result.Remove(result.Length - 1, 1);
+                return result.ToString();
             }
-            if (!string.IsNullOrEmpty(result.ToString()))
-                result = result.Remove(result.Length - 1, 1);
-            return result.ToString();
+            return null;
         }
         public string GetAllAnalisis()
         {
             StringBuilder result = new StringBuilder();
-            foreach (var s in Analyzes)
+            if (Analyzes != null)
             {
-                result.Append($"{s.Name},");
+                foreach (var s in Analyzes)
+                {
+                    result.Append($"{s.Name},");
+                }
+                if (!string.IsNullOrEmpty(result.ToString()))
+                    result = result.Remove(result.Length - 1, 1);
+                return result.ToString();
             }
-            if (!string.IsNullOrEmpty(result.ToString()))
-                result = result.Remove(result.Length - 1, 1);
-            return result.ToString();
+            return null;
         }
         public decimal GetAnalisisPrice()
         {
-            decimal res= 0m;
+            decimal res = 0m;
             foreach (var item in Analyzes)
             {
                 res += item.Price;

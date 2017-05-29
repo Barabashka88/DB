@@ -8,7 +8,6 @@ namespace Domain.Concrete
     public class ClinicRepository
     {
         public readonly ClinicContext _context = new ClinicContext();
-
         public IEnumerable<Patient> GetAllPatients()
         {
             var patients = (from patient in _context.Patients select patient);
@@ -49,7 +48,6 @@ namespace Domain.Concrete
             var analisis = from analis in _context.Analyzes select analis;
             return analisis.ToList();
         }
-
         public void AddPerson(Person person)
         {
             _context.Persons.Add(person);
@@ -58,12 +56,14 @@ namespace Domain.Concrete
         {
             _context.Patients.Add(patient);
         }
-
         public void AddApointment(Appointment apointment)
         {
             _context.Appointments.Add(apointment);
         }
-
+        public void AddApointmentResult(AppointmentResult result)
+        {
+            _context.AppointmentResults.Add(result);
+        }
         public void UpdatePatient(Patient patientObj)
         {
             _context.Patients.Attach(patientObj);
@@ -102,6 +102,14 @@ namespace Domain.Concrete
         {
             return _context.Doctors.FirstOrDefault(x => x.DoctorIs == doctorId);
         }
+        public Appointment GetAppointByPatientId(int patientId)
+        {
+            return _context.Appointments.FirstOrDefault(x => x.Patient.PatientId == patientId);
+        }
+        public Appointment GetAppointById(int Id)
+        {
+            return _context.Appointments.FirstOrDefault(x => x.AppointmentId == Id);
+        }
         public AppointmentResult GetResultByPatientId(int patientId)
         {
             return _context.AppointmentResults.FirstOrDefault(x => x.Patient.PatientId == patientId);
@@ -121,6 +129,15 @@ namespace Domain.Concrete
         public void DeletePerson(Person person)
         {
             _context.Persons.Remove(person);
+        }
+       public void DeleteAppointment(Appointment app)
+        {
+            _context.Appointments.Remove(app);
+            Save();
+        }
+        public void DeleteAppointmentResults(AppointmentResult app)
+        {
+            _context.AppointmentResults.Remove(app);
         }
         public void Save()
         {

@@ -41,7 +41,7 @@ namespace ClinicDBProject
 
         private void addPatientButton_Click(object sender, EventArgs e)
         {
-            AddOrEditPatientForm form = new AddOrEditPatientForm(_repository) {Text = "Новий пацієнт"};
+            AddOrEditPatientForm form = new AddOrEditPatientForm(_repository) { Text = "Новий пацієнт" };
             Hide();
             form.ShowDialog();
             Show();
@@ -69,24 +69,31 @@ namespace ClinicDBProject
                 form.ShowDialog();
                 Show();
                 _repository.Save();
-               InitializeTable();
+                InitializeTable();
             }
         }
 
         private void deletePatientButton_Click(object sender, EventArgs e)
         {
-            if (patientsView.SelectedRows.Count >= 1)
+            if (MessageBox.Show("Видалити пацієнта?", "Видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                foreach (DataGridViewRow item in patientsView.SelectedRows)
+                if (patientsView.SelectedRows.Count >= 1)
                 {
-                    int id = int.Parse(item.Cells[8].Value.ToString());
-                    var query = (from patient in _repository.GetAllPatients() where patient.PatientId == id select patient).ToList();
-                    _repository.DeletePerson(query[0].Person);
-                    _repository.DeletePatient(query[0]);
-                    _repository.Save();
+                    foreach (DataGridViewRow item in patientsView.SelectedRows)
+                    {
+                        int id = int.Parse(item.Cells[8].Value.ToString());
+                        var query = (from patient in _repository.GetAllPatients() where patient.PatientId == id select patient).ToList();
+
+                        while (_repository.GetAppointByPatientId(id) != null)
+                            _repository.DeleteAppointment(_repository.GetAppointByPatientId(id));
+                        _repository.DeleteAppointmentResults(_repository.GetResultByPatientId(id));
+                        _repository.DeletePerson(query[0].Person);
+                        _repository.DeletePatient(query[0]);
+                        _repository.Save();
+                    }
                 }
+                InitializeTable();
             }
-            InitializeTable();
         }
     }
 }
