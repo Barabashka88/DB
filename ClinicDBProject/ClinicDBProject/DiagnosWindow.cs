@@ -26,9 +26,7 @@ namespace ClinicDBProject
             drugComboBox.ValueMember = "DrugId";
             drugComboBox.DisplayMember = "Name";
             drugComboBox.SelectedIndex = -1;
-            //var query = (from an in _repository.GetAllAnalyses() select an).ToList().Except(_repository.GetResultByPatientId(PatientId).Analyzes);
-            // (from an in _repository.GetAllAppointmentResults() where an.Patient.PatientId==PatientId );
-            analysisComboBox.DataSource = _repository.GetAllAnalyses();
+           analysisComboBox.DataSource = _repository.GetAllAnalyses();
             analysisComboBox.ValueMember = "AnalysisId";
             analysisComboBox.DisplayMember = "Name";
             analysisComboBox.SelectedIndex = -1;
