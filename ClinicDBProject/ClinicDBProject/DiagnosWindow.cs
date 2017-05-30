@@ -48,7 +48,6 @@ namespace ClinicDBProject
                 result.Drugs.Add(_repository.GetDrugsById((int)drugComboBox.SelectedValue));
             result.Diagnos = diagnosTextBox.Text;
             _repository.UpdateAppointmentResult(result);
-            Close();
         }
     }
 }

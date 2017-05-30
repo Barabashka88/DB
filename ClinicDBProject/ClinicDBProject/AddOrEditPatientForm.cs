@@ -110,6 +110,10 @@ namespace ClinicDBProject
             {
                 return false;
             }
+            if (birthDateTimePicker.Value>DateTime.Today)
+            {
+                return false;
+            }
             return true;
         }
     }
