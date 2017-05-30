@@ -17,9 +17,10 @@ namespace ClinicDBProject
         {
             InitializeComponent();
             chart1.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Number;
-            chart1.ChartAreas[0].AxisX.Minimum = 0;
-            chart1.ChartAreas[0].AxisX.Maximum = 1;
+            chart1.ChartAreas[0].AxisX.Minimum = 1;
+            chart1.ChartAreas[0].AxisX.Maximum = 12;
             chart1.ChartAreas[0].AxisX.Interval = 1;
+
         }
 
         private void StatWindow_Load(object sender, EventArgs e)

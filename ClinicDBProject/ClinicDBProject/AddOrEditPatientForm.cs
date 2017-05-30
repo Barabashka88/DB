@@ -2,6 +2,7 @@
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Windows.Forms;
 
 namespace ClinicDBProject
@@ -10,7 +11,7 @@ namespace ClinicDBProject
     {
         private readonly ClinicRepository _repository;
         public int PatientId;
-        public AddOrEditPatientForm(ClinicRepository repository )
+        public AddOrEditPatientForm(ClinicRepository repository)
         {
             _repository = repository;
             InitializeComponent();
@@ -26,66 +27,89 @@ namespace ClinicDBProject
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (AreAllFieldsValid())
+            bool? check=null;
+            try
             {
-                Person person;
-                Patient patient;
-                if (Text == "Новий пацієнт")
+                if (AreAllFieldsValid())
                 {
-
-                    person = new Person
+                    Person person;
+                    Patient patient;
+                    if (Text == "Новий пацієнт")
                     {
-                        FirstName = firstNameTextBox.Text,
-                        LastName = lastNameTextBox.Text,
-                        PhoneNumber = PhoneTextBox.Text,
-                        Address = adressTextBox.Text,
-                        DateOfBirth = Convert.ToDateTime(birthDateTimePicker.Value.ToString("dd/MM/yyyy"))
-                    };
-                    patient = new Patient
-                    {
-                        Person = person,
-                        BloodGroup = int.Parse(BloodComboBox.SelectedValue.ToString()),
-                        Height = Convert.ToInt32(heightTextBox.Text),
-                        Weight = double.Parse(weightTextBox.Text)
-                    };
+                        person = new Person
+                        {
+                            FirstName = firstNameTextBox.Text,
+                            LastName = lastNameTextBox.Text,
+                            PhoneNumber = PhoneTextBox.Text,
+                            Address = adressTextBox.Text,
+                            DateOfBirth = Convert.ToDateTime(birthDateTimePicker.Value.ToString("dd/MM/yyyy"))
+                        };
+                        patient = new Patient
+                        {
+                            Person = person,
+                            BloodGroup = int.Parse(BloodComboBox.SelectedValue.ToString()),
+                            Height = Convert.ToInt32(heightTextBox.Text),
+                            Weight = double.Parse(weightTextBox.Text)
+                        };
 
-                    _repository.AddPerson(person);
-                    _repository.AddPatient(patient);
-                    var result = new AppointmentResult
-                    {
-                        Patient = patient,
-                        Analyzes = new List<Analysis>(),
-                        Drugs = new List<Drug>()
-                    };
-                    _repository.AddApointmentResult(result);
+                        _repository.AddPerson(person);
+                        _repository.AddPatient(patient);
+                        var result = new AppointmentResult
+                        {
+                            Patient = patient,
+                            Analyzes = new List<Analysis>(),
+                            Drugs = new List<Drug>()
+                        };
+                        _repository.AddApointmentResult(result);
 
-                    MessageBox.Show("Пацієнта додано");
+                        check = true;
+                        // MessageBox.Show("Пацієнта додано");
+                    }
+                    else
+                    {
+
+                        patient = _repository.GetPatientById(PatientId);
+                        person = _repository.GetPersonById(patient.Person.PersonId);
+                        person.FirstName = firstNameTextBox.Text;
+                        person.LastName = lastNameTextBox.Text;
+                        person.PhoneNumber = PhoneTextBox.Text;
+                        person.Address = adressTextBox.Text;
+                        person.DateOfBirth = birthDateTimePicker.Value;
+                        patient.Person = person;
+                        patient.BloodGroup = int.Parse(BloodComboBox.SelectedValue.ToString());
+                        patient.Height = Convert.ToInt32(heightTextBox.Text);
+                        patient.Weight = double.Parse(weightTextBox.Text);
+
+                        _repository.UpdatePerson(person);
+                        _repository.UpdatePatient(patient);
+
+                        check = false;
+                        // MessageBox.Show("Пацієнта відредаговано");
+                    }
+                    _repository.Save();
                 }
                 else
                 {
-                    patient = _repository.GetPatientById(PatientId);
-                    person = _repository.GetPersonById(patient.Person.PersonId);
-                    person.FirstName = firstNameTextBox.Text;
-                    person.LastName = lastNameTextBox.Text;
-                    person.PhoneNumber = PhoneTextBox.Text;
-                    person.Address = adressTextBox.Text;
-                    person.DateOfBirth = birthDateTimePicker.Value;
-                    patient.Person = person;
-                    patient.BloodGroup = int.Parse(BloodComboBox.SelectedValue.ToString());
-                    patient.Height = Convert.ToInt32(heightTextBox.Text);
-                    patient.Weight = double.Parse(weightTextBox.Text);
-
-                    _repository.UpdatePerson(person);
-                    _repository.UpdatePatient(patient);
-                    MessageBox.Show("Пацієнта відредаговано");
+                    MessageBox.Show("Не всі необхідні поля заповнено , або заповнено неправильно");
                 }
-                _repository.Save();
+            }
+            catch (DbEntityValidationException)
+            {
+                MessageBox.Show("Погано введені дані");
+                check = null;
+            }
+            if (check==true)
+            {
+                MessageBox.Show("Пацієнта додано");
                 Close();
             }
-            else
+            else if (check == false)
             {
-                MessageBox.Show("Не всі необхідні поля заповнено , або заповнено неправильно");
+                MessageBox.Show("Пацієнта відредаговано");
+                Close();
             }
+            
+            
         }
         private bool AreAllFieldsValid()
         {
@@ -110,7 +134,7 @@ namespace ClinicDBProject
             {
                 return false;
             }
-            if (birthDateTimePicker.Value>DateTime.Today)
+            if (birthDateTimePicker.Value > DateTime.Today)
             {
                 return false;
             }
