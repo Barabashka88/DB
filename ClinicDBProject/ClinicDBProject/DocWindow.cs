@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Migrations.Sql;
 using System.Linq;
 using System.Windows.Forms;
 using Domain.Concrete;
@@ -64,8 +65,6 @@ namespace ClinicDBProject
                               Аналізи = res.GetAllAnalisis(),
                               Діагноз = res.Diagnos
                           });
-            var q = (from a in _repository.GetAllAppointmentResults() select a).ToList();
-
             diagnosDataGrid.DataSource = query2.ToList();
             //diagnosDataGrid.Columns.Add(column);
             appointmentsView.Visible = true;
@@ -97,7 +96,7 @@ namespace ClinicDBProject
         }
         private void addDescriptionButton_Click(object sender, EventArgs e)
         {
-            if (descriptionTextBox.Text != null)
+            if (!string.IsNullOrEmpty(descriptionTextBox.Text))
             {
                 Appointment appointment = new Appointment
                 {
@@ -110,6 +109,10 @@ namespace ClinicDBProject
                 _repository.Save();
                 DataGridInitialize();
                 descriptionTextBox.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Введіть результат прийому");
             }
         }
 

@@ -97,14 +97,14 @@
             this.patientsView.ReadOnly = true;
             this.patientsView.RowTemplate.Height = 24;
             this.patientsView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.patientsView.Size = new System.Drawing.Size(527, 315);
+            this.patientsView.Size = new System.Drawing.Size(699, 315);
             this.patientsView.TabIndex = 5;
             // 
             // RegisterWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 343);
+            this.ClientSize = new System.Drawing.Size(896, 339);
             this.Controls.Add(this.patientsView);
             this.Controls.Add(this.editPatientButton);
             this.Controls.Add(this.deletePatientButton);
@@ -114,7 +114,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "RegisterWindow";
-            this.Text = "RegisterWindow";
+            this.Text = "Реєстрація пацієнтів";
             ((System.ComponentModel.ISupportInitialize)(this.patientsView)).EndInit();
             this.ResumeLayout(false);
 

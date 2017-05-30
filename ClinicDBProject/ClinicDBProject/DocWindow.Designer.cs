@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.doctorNameLabel = new System.Windows.Forms.Label();
             this.doctorSurnameLabel = new System.Windows.Forms.Label();
             this.doctorSpecializationLabel = new System.Windows.Forms.Label();
             this.patientsComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.submitButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.appointmentsView = new System.Windows.Forms.DataGridView();
             this.addDescriptionButton = new System.Windows.Forms.Button();
@@ -104,21 +103,10 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Виберіть пацієнта";
             // 
-            // submitButton
-            // 
-            this.submitButton.Font = new System.Drawing.Font("Mistral", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.submitButton.Location = new System.Drawing.Point(516, 383);
-            this.submitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(173, 66);
-            this.submitButton.TabIndex = 5;
-            this.submitButton.Text = "Підтвердити";
-            this.submitButton.UseVisualStyleBackColor = true;
-            // 
             // backButton
             // 
             this.backButton.Font = new System.Drawing.Font("Mistral", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.backButton.Location = new System.Drawing.Point(12, 383);
+            this.backButton.Location = new System.Drawing.Point(16, 382);
             this.backButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(173, 66);
@@ -134,14 +122,14 @@
             this.appointmentsView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.appointmentsView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.appointmentsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.appointmentsView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.appointmentsView.DefaultCellStyle = dataGridViewCellStyle5;
             this.appointmentsView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.appointmentsView.Location = new System.Drawing.Point(3, 3);
             this.appointmentsView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -177,9 +165,9 @@
             // diagnosButton
             // 
             this.diagnosButton.Font = new System.Drawing.Font("Mistral", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diagnosButton.Location = new System.Drawing.Point(225, 351);
+            this.diagnosButton.Location = new System.Drawing.Point(419, 382);
             this.diagnosButton.Name = "diagnosButton";
-            this.diagnosButton.Size = new System.Drawing.Size(263, 66);
+            this.diagnosButton.Size = new System.Drawing.Size(270, 66);
             this.diagnosButton.TabIndex = 10;
             this.diagnosButton.Text = "Діагноз та лікування";
             this.diagnosButton.UseVisualStyleBackColor = true;
@@ -226,14 +214,14 @@
             this.diagnosDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.diagnosDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.diagnosDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.diagnosDataGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.diagnosDataGrid.DefaultCellStyle = dataGridViewCellStyle6;
             this.diagnosDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagnosDataGrid.Location = new System.Drawing.Point(3, 3);
             this.diagnosDataGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -254,15 +242,16 @@
             this.Controls.Add(this.descriptionTextBox);
             this.Controls.Add(this.addDescriptionButton);
             this.Controls.Add(this.backButton);
-            this.Controls.Add(this.submitButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.patientsComboBox);
             this.Controls.Add(this.doctorSpecializationLabel);
             this.Controls.Add(this.doctorSurnameLabel);
             this.Controls.Add(this.doctorNameLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "DocWindow";
-            this.Text = "DocWindow";
+            this.Text = "Особистий Кабінет Лікаря";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DocWindow_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsView)).EndInit();
             this.tabControl1.ResumeLayout(false);
@@ -281,7 +270,6 @@
         private System.Windows.Forms.Label doctorSpecializationLabel;
         private System.Windows.Forms.ComboBox patientsComboBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.DataGridView appointmentsView;
         private System.Windows.Forms.Button addDescriptionButton;
