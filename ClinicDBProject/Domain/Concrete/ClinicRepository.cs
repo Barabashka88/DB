@@ -7,7 +7,7 @@ namespace Domain.Concrete
 {
     public class ClinicRepository
     {
-        public readonly ClinicContext _context = new ClinicContext();
+        private readonly ClinicContext _context = new ClinicContext();
         public IEnumerable<Patient> GetAllPatients()
         {
             var patients = (from patient in _context.Patients select patient);
@@ -106,9 +106,9 @@ namespace Domain.Concrete
         {
             return _context.Appointments.FirstOrDefault(x => x.Patient.PatientId == patientId);
         }
-        public Appointment GetAppointById(int Id)
+        public Appointment GetAppointById(int id)
         {
-            return _context.Appointments.FirstOrDefault(x => x.AppointmentId == Id);
+            return _context.Appointments.FirstOrDefault(x => x.AppointmentId == id);
         }
         public AppointmentResult GetResultByPatientId(int patientId)
         {

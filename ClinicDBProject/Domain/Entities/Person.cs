@@ -9,9 +9,17 @@ namespace Domain.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PersonId { get; set; }
+        [Column(TypeName = "NVARCHAR")]
+        [StringLength(20)]
         public string FirstName { get; set; }
+        [Column(TypeName = "NVARCHAR")]
+        [StringLength(20)]
         public string LastName { get; set; }
+        [Column(TypeName = "NVARCHAR")]
+        [StringLength(13)]
         public string PhoneNumber { get; set; }
+        [Column(TypeName = "NVARCHAR")]
+        [StringLength(40)]
         public string Address { get; set; }
         public DateTime DateOfBirth { get; set; }
 

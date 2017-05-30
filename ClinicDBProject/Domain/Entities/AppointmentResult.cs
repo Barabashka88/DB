@@ -11,6 +11,8 @@ namespace Domain.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ResultId { get; set; }
         public virtual Patient Patient { get; set; }
+        [Column(TypeName = "NVARCHAR")]
+        [StringLength(150)]
         public string Diagnos { get; set; }
         public virtual ICollection<Analysis> Analyzes { get; set; }
         public virtual ICollection<Drug> Drugs { get; set; }

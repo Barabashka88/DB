@@ -25,61 +25,92 @@ namespace ClinicDBProject
         }
 
         private void saveButton_Click(object sender, EventArgs e)
-        {            
-            Person person;
-            Patient patient;
-            AppointmentResult result;
-            Appointment app;
-            if (Text == "Новий пацієнт")
+        {
+            if (AreAllFieldsValid())
             {
-                person = new Person
+                Person person;
+                Patient patient;
+                if (Text == "Новий пацієнт")
                 {
-                    FirstName = firstNameTextBox.Text,
-                    LastName = lastNameTextBox.Text,
-                    PhoneNumber = PhoneTextBox.Text,
-                    Address = adressTextBox.Text,
-                    DateOfBirth =Convert.ToDateTime(birthDateTimePicker.Value.ToString("dd/MM/yyyy"))
-                };
-                patient = new Patient
+
+                    person = new Person
+                    {
+                        FirstName = firstNameTextBox.Text,
+                        LastName = lastNameTextBox.Text,
+                        PhoneNumber = PhoneTextBox.Text,
+                        Address = adressTextBox.Text,
+                        DateOfBirth = Convert.ToDateTime(birthDateTimePicker.Value.ToString("dd/MM/yyyy"))
+                    };
+                    patient = new Patient
+                    {
+                        Person = person,
+                        BloodGroup = int.Parse(BloodComboBox.SelectedValue.ToString()),
+                        Height = Convert.ToInt32(heightTextBox.Text),
+                        Weight = double.Parse(weightTextBox.Text)
+                    };
+
+                    _repository.AddPerson(person);
+                    _repository.AddPatient(patient);
+                    var result = new AppointmentResult
+                    {
+                        Patient = patient,
+                        Analyzes = new List<Analysis>(),
+                        Drugs = new List<Drug>()
+                    };
+                    _repository.AddApointmentResult(result);
+
+                    MessageBox.Show("Пацієнта додано");
+                }
+                else
                 {
-                    Person = person,
-                    BloodGroup = int.Parse(BloodComboBox.SelectedValue.ToString()),
-                    Height = Convert.ToInt32(heightTextBox.Text),
-                    Weight = double.Parse(weightTextBox.Text)
-                };
-                
-                _repository.AddPerson(person);
-                _repository.AddPatient(patient);
-                result = new AppointmentResult
-                {
-                    Patient = patient,
-                    Analyzes = new List<Analysis>(),
-                    Drugs = new List<Drug>()
-                };
-                _repository.AddApointmentResult(result);
-               
-                MessageBox.Show("Пацієнта додано");
+                    patient = _repository.GetPatientById(PatientId);
+                    person = _repository.GetPersonById(patient.Person.PersonId);
+                    person.FirstName = firstNameTextBox.Text;
+                    person.LastName = lastNameTextBox.Text;
+                    person.PhoneNumber = PhoneTextBox.Text;
+                    person.Address = adressTextBox.Text;
+                    person.DateOfBirth = birthDateTimePicker.Value;
+                    patient.Person = person;
+                    patient.BloodGroup = int.Parse(BloodComboBox.SelectedValue.ToString());
+                    patient.Height = Convert.ToInt32(heightTextBox.Text);
+                    patient.Weight = double.Parse(weightTextBox.Text);
+
+                    _repository.UpdatePerson(person);
+                    _repository.UpdatePatient(patient);
+                    MessageBox.Show("Пацієнта відредаговано");
+                }
+                _repository.Save();
+                Close();
             }
             else
             {
-                patient = _repository.GetPatientById(PatientId);
-                person = _repository.GetPersonById(patient.Person.PersonId);
-                person.FirstName = firstNameTextBox.Text;
-                person.LastName = lastNameTextBox.Text;
-                person.PhoneNumber = PhoneTextBox.Text;
-                person.Address = adressTextBox.Text;
-                person.DateOfBirth = birthDateTimePicker.Value;
-                patient.Person = person;
-                patient.BloodGroup = int.Parse(BloodComboBox.SelectedValue.ToString());
-                patient.Height = Convert.ToInt32(heightTextBox.Text);
-                patient.Weight = double.Parse(weightTextBox.Text);
-
-                _repository.UpdatePerson(person);
-                _repository.UpdatePatient(patient);
-                MessageBox.Show("Пацієнта відредаговано");
+                MessageBox.Show("Не всі необхідні поля заповнено , або заповнено неправильно");
             }
-            _repository.Save();
-            Close();
+        }
+        private bool AreAllFieldsValid()
+        {
+            double result;
+            if (string.IsNullOrEmpty(firstNameTextBox.Text))
+            {
+                return false;
+            }
+            if (string.IsNullOrEmpty(lastNameTextBox.Text))
+            {
+                return false;
+            }
+            if (!double.TryParse(heightTextBox.Text, out result))
+            {
+                return false;
+            }
+            if (!double.TryParse(weightTextBox.Text, out result))
+            {
+                return false;
+            }
+            if (BloodComboBox.SelectedValue == null)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

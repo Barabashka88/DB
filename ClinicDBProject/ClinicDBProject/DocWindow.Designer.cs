@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.doctorNameLabel = new System.Windows.Forms.Label();
             this.doctorSurnameLabel = new System.Windows.Forms.Label();
             this.doctorSpecializationLabel = new System.Windows.Forms.Label();
@@ -122,28 +122,28 @@
             this.appointmentsView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.appointmentsView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.appointmentsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.appointmentsView.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.appointmentsView.DefaultCellStyle = dataGridViewCellStyle3;
             this.appointmentsView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.appointmentsView.Location = new System.Drawing.Point(3, 3);
+            this.appointmentsView.Location = new System.Drawing.Point(0, 0);
             this.appointmentsView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.appointmentsView.Name = "appointmentsView";
             this.appointmentsView.ReadOnly = true;
             this.appointmentsView.RowTemplate.Height = 24;
-            this.appointmentsView.Size = new System.Drawing.Size(387, 202);
+            this.appointmentsView.Size = new System.Drawing.Size(393, 208);
             this.appointmentsView.TabIndex = 7;
             this.appointmentsView.Visible = false;
             // 
             // addDescriptionButton
             // 
             this.addDescriptionButton.Font = new System.Drawing.Font("Mistral", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addDescriptionButton.Location = new System.Drawing.Point(419, 277);
+            this.addDescriptionButton.Location = new System.Drawing.Point(419, 284);
             this.addDescriptionButton.Name = "addDescriptionButton";
             this.addDescriptionButton.Size = new System.Drawing.Size(270, 61);
             this.addDescriptionButton.TabIndex = 8;
@@ -158,7 +158,7 @@
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.descriptionTextBox.Size = new System.Drawing.Size(270, 139);
+            this.descriptionTextBox.Size = new System.Drawing.Size(270, 146);
             this.descriptionTextBox.TabIndex = 9;
             this.descriptionTextBox.Visible = false;
             // 
@@ -178,10 +178,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 108);
+            this.tabControl1.Location = new System.Drawing.Point(3, 108);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(401, 237);
+            this.tabControl1.Size = new System.Drawing.Size(410, 237);
             this.tabControl1.TabIndex = 11;
             this.tabControl1.Visible = false;
             // 
@@ -190,7 +190,6 @@
             this.tabPage1.Controls.Add(this.appointmentsView);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(393, 208);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Прийоми";
@@ -201,8 +200,7 @@
             this.tabPage2.Controls.Add(this.diagnosDataGrid);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(393, 208);
+            this.tabPage2.Size = new System.Drawing.Size(402, 208);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Діагнози";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -214,21 +212,21 @@
             this.diagnosDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.diagnosDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.diagnosDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.diagnosDataGrid.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.diagnosDataGrid.DefaultCellStyle = dataGridViewCellStyle4;
             this.diagnosDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.diagnosDataGrid.Location = new System.Drawing.Point(3, 3);
+            this.diagnosDataGrid.Location = new System.Drawing.Point(0, 0);
             this.diagnosDataGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.diagnosDataGrid.Name = "diagnosDataGrid";
             this.diagnosDataGrid.ReadOnly = true;
             this.diagnosDataGrid.RowTemplate.Height = 24;
-            this.diagnosDataGrid.Size = new System.Drawing.Size(387, 202);
+            this.diagnosDataGrid.Size = new System.Drawing.Size(402, 208);
             this.diagnosDataGrid.TabIndex = 8;
             this.diagnosDataGrid.Visible = false;
             // 

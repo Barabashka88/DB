@@ -9,6 +9,8 @@ namespace Domain.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AnalysisId { get; set; }
+        [Column(TypeName = "NVARCHAR")]
+        [StringLength(50)]
         public string Name { get; set; }
         public decimal Price { get; set; }
 

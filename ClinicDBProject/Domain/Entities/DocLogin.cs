@@ -7,7 +7,8 @@ namespace Domain.Entities
     {
         [Key]
         public int LoginId { get; set; }
-        [StringLength(450)]
+        [Column(TypeName = "NVARCHAR")]
+        [StringLength(20)]
         [Index(IsUnique = true)]
         public string Login { get; set; }
         [Index(IsUnique = true)]
