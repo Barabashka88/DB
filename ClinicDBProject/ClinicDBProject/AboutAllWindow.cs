@@ -67,5 +67,13 @@ namespace ClinicDBProject
                 Ціна = (res.GetAnalisisPrice() + res.GetDrugPrice()).ToString()
             }).ToList();
         }
+
+        private void appointmentsButton_Click(object sender, EventArgs e)
+        {
+            StatWindow window = new StatWindow(_repository);
+            Hide();
+            window.ShowDialog();
+            Show();
+        }
     }
 }

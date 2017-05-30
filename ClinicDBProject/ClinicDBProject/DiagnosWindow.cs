@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Domain.Concrete;
 using Domain.Entities;
+using System.Linq;
 
 namespace ClinicDBProject
 {
@@ -10,7 +11,6 @@ namespace ClinicDBProject
     {
         private readonly ClinicRepository _repository;
         public int PatientId;
-
         public DiagnosWindow(ClinicRepository repository)
         {
             _repository = repository;
@@ -20,12 +20,14 @@ namespace ClinicDBProject
         public void Initialize()
         {
             patientLabel.Text = _repository.GetPatientById(PatientId).Person.FullName;
+            var query = (from an in _repository.GetAllDrugs() select an).ToList().Except(_repository.GetResultByPatientId(PatientId).Drugs);
             label3.Location = new Point(patientLabel.Location.X + patientLabel.Size.Width, patientLabel.Location.Y);
-            drugComboBox.DataSource = _repository.GetAllDrugs();
+            drugComboBox.DataSource = query.ToList();
             drugComboBox.ValueMember = "DrugId";
             drugComboBox.DisplayMember = "Name";
             drugComboBox.SelectedIndex = -1;
-
+            //var query = (from an in _repository.GetAllAnalyses() select an).ToList().Except(_repository.GetResultByPatientId(PatientId).Analyzes);
+            // (from an in _repository.GetAllAppointmentResults() where an.Patient.PatientId==PatientId );
             analysisComboBox.DataSource = _repository.GetAllAnalyses();
             analysisComboBox.ValueMember = "AnalysisId";
             analysisComboBox.DisplayMember = "Name";
@@ -48,6 +50,9 @@ namespace ClinicDBProject
                 result.Drugs.Add(_repository.GetDrugsById((int)drugComboBox.SelectedValue));
             result.Diagnos = diagnosTextBox.Text;
             _repository.UpdateAppointmentResult(result);
+            analysisComboBox.SelectedIndex = -1;
+            drugComboBox.SelectedIndex = -1;
+            MessageBox.Show("Діагноз і лікування успішно додані");
         }
     }
 }

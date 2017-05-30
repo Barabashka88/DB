@@ -45,6 +45,22 @@ namespace Domain.Concrete
                 DateOfBirth = new DateTime(1997, 12, 03),
                 PhoneNumber = "0938737355"
             };
+            var person3 = new Person
+            {
+                FirstName = "Василь",
+                LastName = "Пупкін",
+                Address = "Чорновола",
+                DateOfBirth = new DateTime(1995, 06, 07),
+                PhoneNumber = "0322222522"
+            };
+            var person4 = new Person
+            {
+                FirstName = "Іван",
+                LastName = "Іваненко",
+                Address = "Чорновола",
+                DateOfBirth = new DateTime(1998, 06, 07),
+                PhoneNumber = "0322223522"
+            };
             var person2 = new Person
             {
                 FirstName = "Сергій",
@@ -55,6 +71,8 @@ namespace Domain.Concrete
             };
             context.Persons.Add(person1);
             context.Persons.Add(person2);
+            context.Persons.Add(person3);
+            context.Persons.Add(person4);
             var patient = new Patient
             {
                 Height = 180,
@@ -63,20 +81,41 @@ namespace Domain.Concrete
                 Person = person1
             };
             context.Patients.Add(patient);
+            var patient2 = new Patient
+            {
+                Height = 200,
+                Weight = 60,
+                BloodGroup = 4,
+                Person = person4
+            };
+            context.Patients.Add(patient2);
             var doctor = new Doctor
             {
                 Person = person2,
                 Specialization = "Хірург"
             };
+            var doctor2 = new Doctor
+            {
+                Person = person3,
+                Specialization = "Педіатр"
+            };
+
             context.Doctors.Add(doctor);
+            context.Doctors.Add(doctor2);
             var login = new DocLogin
             {
                 Doctor = doctor,
                 Login = "Serg",
                 Password = "12345"
             };
+            var login2 = new DocLogin
+            {
+                Doctor = doctor2,
+                Login = "Vasia",
+                Password = "12345"
+            };
             context.DocsLogins.Add(login);
-
+            context.DocsLogins.Add(login2);
             var analys1 = new Analysis
             {
                 Name = "Обширний аналі крові",
@@ -106,15 +145,15 @@ namespace Domain.Concrete
             {
                 Doctor = doctor,
                 Patient = patient,
-                Date = DateTime.Today,
+                Date =new  DateTime(2017,01,01),
                 Description = "so bad"
            
             };
             var appointment2 = new Appointment
             {
-                Doctor = doctor,
-                Patient = patient,
-                Date = DateTime.Today,
+                Doctor = doctor2,
+                Patient = patient2,
+                Date = new DateTime(2017, 02, 01),
                 Description = "very bad"
             };
             context.Appointments.Add(appointment);

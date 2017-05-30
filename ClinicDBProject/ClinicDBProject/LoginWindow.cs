@@ -23,22 +23,28 @@ namespace ClinicDBProject
 
         private void logInButton_Click(object sender, EventArgs e)
         {
+            bool check = false;
             var query = (from logins in _repository.GetAllLogins()
                          join doc in _repository.GetAllDoctors() on logins.Doctor equals doc
                          select logins).ToList();
-            if (query[0].Password == passwordTextBox.Text && query[0].Login == loginTextBox.Text)
+            foreach (var el in query)
             {
-                DocWindow form =
-                    new DocWindow(_repository, _welcomeWindow)
-                    {
-                        DocId = _repository.GetDoctorByLogin(query[0].Login).DoctorIs
-                    };
-                form.InitializeForm();
-                _welcomeWindow.Hide();
-                Hide();
-                form.ShowDialog();
+                if (el.Password == passwordTextBox.Text && el.Login == loginTextBox.Text)
+                {
+                    check = true;
+                    DocWindow form =
+                        new DocWindow(_repository, _welcomeWindow)
+                        {
+                            DocId = _repository.GetDoctorByLogin(el.Login).DoctorIs
+                        };
+                    form.InitializeForm();
+                    _welcomeWindow.Hide();
+                    Hide();
+                    form.ShowDialog();
+                    
+                }
             }
-            else
+            if (check==false)
             {
                 MessageBox.Show("Данні введено неправильно");
             }

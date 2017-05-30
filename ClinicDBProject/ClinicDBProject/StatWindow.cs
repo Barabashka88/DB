@@ -8,24 +8,45 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Domain.Concrete;
 
 namespace ClinicDBProject
 {
     public partial class StatWindow : Form
     {
-        public StatWindow()
+        private ClinicRepository _repository;
+
+        public StatWindow(ClinicRepository _repository)
         {
             InitializeComponent();
-            chart1.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Number;
-            chart1.ChartAreas[0].AxisX.Minimum = 1;
-            chart1.ChartAreas[0].AxisX.Maximum = 12;
-            chart1.ChartAreas[0].AxisX.Interval = 1;
+            this._repository = _repository;
+            Init();
 
         }
 
+        private void Init()
+        {
+            foreach (var doc in _repository.GetAllDoctors().ToList())
+            {
+                var query = (from app in _repository.GetAllAppointments()
+                             where app.Doctor == doc
+                             select app.Patient).ToList().Distinct();
+                chart1.Series[0].Points.AddXY(doc.Person.FullName, query.Count());
+            }
+        }
         private void StatWindow_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void appointmentsButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
