@@ -34,6 +34,9 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.appointmentsButton = new System.Windows.Forms.Button();
             this.datesComboBox = new System.Windows.Forms.ComboBox();
+            this.patientLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,14 +46,14 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(9, 50);
-            this.chart1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chart1.Location = new System.Drawing.Point(12, 56);
+            this.chart1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Кількість Пацієнтів";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(732, 234);
+            this.chart1.Size = new System.Drawing.Size(907, 288);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "Прибуток";
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
@@ -58,9 +61,10 @@
             // appointmentsButton
             // 
             this.appointmentsButton.Font = new System.Drawing.Font("Mistral", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appointmentsButton.Location = new System.Drawing.Point(12, 418);
+            this.appointmentsButton.Location = new System.Drawing.Point(12, 419);
+            this.appointmentsButton.Margin = new System.Windows.Forms.Padding(4);
             this.appointmentsButton.Name = "appointmentsButton";
-            this.appointmentsButton.Size = new System.Drawing.Size(166, 73);
+            this.appointmentsButton.Size = new System.Drawing.Size(236, 75);
             this.appointmentsButton.TabIndex = 3;
             this.appointmentsButton.Text = "Назад";
             this.appointmentsButton.UseVisualStyleBackColor = true;
@@ -71,27 +75,61 @@
             this.datesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.datesComboBox.Font = new System.Drawing.Font("Mistral", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.datesComboBox.FormattingEnabled = true;
-            this.datesComboBox.Location = new System.Drawing.Point(283, 11);
-            this.datesComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.datesComboBox.Location = new System.Drawing.Point(294, 11);
+            this.datesComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.datesComboBox.Name = "datesComboBox";
-            this.datesComboBox.Size = new System.Drawing.Size(271, 35);
+            this.datesComboBox.Size = new System.Drawing.Size(360, 41);
             this.datesComboBox.TabIndex = 4;
             this.datesComboBox.SelectedIndexChanged += new System.EventHandler(this.patientsComboBox_SelectedIndexChanged);
             // 
+            // patientLabel
+            // 
+            this.patientLabel.AutoSize = true;
+            this.patientLabel.Font = new System.Drawing.Font("Mistral", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.patientLabel.Location = new System.Drawing.Point(13, 11);
+            this.patientLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.patientLabel.Name = "patientLabel";
+            this.patientLabel.Size = new System.Drawing.Size(0, 33);
+            this.patientLabel.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Mistral", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(670, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 33);
+            this.label1.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Mistral", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(13, 360);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 33);
+            this.label2.TabIndex = 7;
+            // 
             // StatWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(752, 503);
+            this.ClientSize = new System.Drawing.Size(935, 513);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.patientLabel);
             this.Controls.Add(this.datesComboBox);
             this.Controls.Add(this.appointmentsButton);
             this.Controls.Add(this.chart1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "StatWindow";
             this.Text = "StatWindow";
             this.Load += new System.EventHandler(this.StatWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -100,5 +138,8 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button appointmentsButton;
         private System.Windows.Forms.ComboBox datesComboBox;
+        private System.Windows.Forms.Label patientLabel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

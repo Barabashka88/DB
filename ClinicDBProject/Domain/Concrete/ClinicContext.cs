@@ -145,7 +145,7 @@ namespace Domain.Concrete
             {
                 Doctor = doctor,
                 Patient = patient,
-                Date =new  DateTime(2017,01,01),
+                Date =new  DateTime(2017,04,01),
                 Description = "so bad"
            
             };
@@ -168,7 +168,17 @@ namespace Domain.Concrete
                     analys1
                 }
             };
+            var appresult2 = new AppointmentResult
+            {
+                Patient = patient2,
+                Diagnos = "Рак",
+                Drugs = new List<Drug>
+                {
+                    drug1
+                }
+            };
             context.AppointmentResults.Add(appresult);
+            context.AppointmentResults.Add(appresult2);
             base.Seed(context);
         }
     }

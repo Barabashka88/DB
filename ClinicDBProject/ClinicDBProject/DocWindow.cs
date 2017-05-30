@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.Entity.Migrations.Sql;
 using System.Linq;
 using System.Windows.Forms;
 using Domain.Concrete;

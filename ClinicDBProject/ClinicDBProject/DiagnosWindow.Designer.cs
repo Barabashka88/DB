@@ -65,7 +65,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Mistral", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(145, 32);
+            this.label3.Location = new System.Drawing.Point(146, 32);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(149, 33);
@@ -100,7 +100,7 @@
             this.drugComboBox.Font = new System.Drawing.Font("Mistral", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.drugComboBox.FormattingEnabled = true;
             this.drugComboBox.Location = new System.Drawing.Point(23, 347);
-            this.drugComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.drugComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.drugComboBox.Name = "drugComboBox";
             this.drugComboBox.Size = new System.Drawing.Size(185, 35);
             this.drugComboBox.TabIndex = 5;
@@ -111,7 +111,7 @@
             this.analysisComboBox.Font = new System.Drawing.Font("Mistral", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.analysisComboBox.FormattingEnabled = true;
             this.analysisComboBox.Location = new System.Drawing.Point(329, 347);
-            this.analysisComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.analysisComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.analysisComboBox.Name = "analysisComboBox";
             this.analysisComboBox.Size = new System.Drawing.Size(185, 35);
             this.analysisComboBox.TabIndex = 6;
@@ -120,7 +120,7 @@
             // 
             this.diagnosTextBox.Font = new System.Drawing.Font("Mistral", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.diagnosTextBox.Location = new System.Drawing.Point(23, 69);
-            this.diagnosTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.diagnosTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.diagnosTextBox.Multiline = true;
             this.diagnosTextBox.Name = "diagnosTextBox";
             this.diagnosTextBox.Size = new System.Drawing.Size(491, 237);
@@ -129,7 +129,7 @@
             // okButton
             // 
             this.okButton.Location = new System.Drawing.Point(329, 404);
-            this.okButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.okButton.Margin = new System.Windows.Forms.Padding(4);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(185, 53);
             this.okButton.TabIndex = 8;
@@ -140,7 +140,7 @@
             // backButton
             // 
             this.backButton.Location = new System.Drawing.Point(23, 404);
-            this.backButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.backButton.Margin = new System.Windows.Forms.Padding(4);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(185, 53);
             this.backButton.TabIndex = 9;
@@ -164,7 +164,7 @@
             this.Controls.Add(this.patientLabel);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "DiagnosWindow";
             this.Text = "Діагностування";
