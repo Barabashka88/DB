@@ -27,7 +27,7 @@ namespace ClinicDBProject
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            bool? check=null;
+            bool? check = null;
             try
             {
                 if (AreAllFieldsValid())
@@ -58,7 +58,7 @@ namespace ClinicDBProject
                         {
                             Patient = patient,
                             Analyzes = new List<Analysis>(),
-                            Drugs = new List<Drug>()
+                            Drugs = new List<Drug>(),
                         };
                         _repository.AddApointmentResult(result);
 
@@ -98,7 +98,7 @@ namespace ClinicDBProject
                 MessageBox.Show("Погано введені дані");
                 check = null;
             }
-            if (check==true)
+            if (check == true)
             {
                 MessageBox.Show("Пацієнта додано");
                 Close();
@@ -108,8 +108,8 @@ namespace ClinicDBProject
                 MessageBox.Show("Пацієнта відредаговано");
                 Close();
             }
-            
-            
+
+
         }
         private bool AreAllFieldsValid()
         {
@@ -134,7 +134,7 @@ namespace ClinicDBProject
             {
                 return false;
             }
-            if (birthDateTimePicker.Value > DateTime.Today)
+            if (birthDateTimePicker.Value >= DateTime.Today)
             {
                 return false;
             }

@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Domain.Concrete;
 using Domain.Entities;
 using System.Linq;
+using System.Threading;
 
 namespace ClinicDBProject
 {
@@ -42,15 +43,39 @@ namespace ClinicDBProject
         private void okButton_Click(object sender, EventArgs e)
         {
             AppointmentResult result = _repository.GetResultByPatientId(PatientId);
+           
             if (analysisComboBox.SelectedIndex != -1)
-                result.Analyzes.Add(_repository.GetAnalysisById((int)analysisComboBox.SelectedValue));
+            {
+                Prices prices = new Prices()
+                {
+                    Result = result
+                };
+                var analis = _repository.GetAnalysisById((int) analysisComboBox.SelectedValue);
+                result.Analyzes.Add(analis);
+                prices.Date = DateTime.Now;
+                prices.Price = analis.Price;
+                _repository.AddPrice(prices);
+            }
             if (drugComboBox.SelectedIndex != -1)
-                result.Drugs.Add(_repository.GetDrugsById((int)drugComboBox.SelectedValue));
+            {
+                Prices prices = new Prices()
+                {
+                    Result = result
+                };
+                var drug = _repository.GetDrugsById((int) drugComboBox.SelectedValue);
+                result.Drugs.Add(drug);
+                Thread.Sleep(1);
+                prices.Date = DateTime.Now;
+                prices.Price = drug.Price;
+                _repository.AddPrice(prices);
+
+            }
             result.Diagnos = diagnosTextBox.Text;
             _repository.UpdateAppointmentResult(result);
             analysisComboBox.SelectedIndex = -1;
             drugComboBox.SelectedIndex = -1;
             MessageBox.Show("Діагноз і лікування успішно додані");
+            Initialize();
         }
     }
 }

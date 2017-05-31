@@ -59,6 +59,7 @@
     <Compile Include="Entities\Drug.cs" />
     <Compile Include="Entities\Patient.cs" />
     <Compile Include="Entities\Person.cs" />
+    <Compile Include="Entities\Prices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@ namespace ClinicDBProject
             _repository = repository;
             List<string> dates = new List<string> { "За останній місяць", "За останні 3 місяці", "за пів року", "за рік" };
             datesComboBox.DataSource = dates;
-           
+
             label1.Text = "Кількість лікарів: " + repository.GetAllDoctors().Count();
             var a = repository.GetAllAppointmentResults().ToList();
             var fullprice = 0.0m;
@@ -25,7 +25,7 @@ namespace ClinicDBProject
             {
                 fullprice += el.GetAnalisisPrice() + el.GetDrugPrice();
             }
-            label2.Text = "Прибуток: " "+fullprice;
+            // label2.Text = "Прибуток: " +fullprice;
         }
 
         private void InitTop5Doctors(DateTime date)
@@ -40,7 +40,8 @@ namespace ClinicDBProject
                 _docPatient.Add(doc, query.Count());
             }
             patientLabel.Text = "Kількість пацієнтів: " + (from app in _repository.GetAllAppointments()
-                                                           where app.Date > date select app.Patient).Count();
+                                                           where app.Date > date
+                                                           select app.Patient).Count();
             var top5 = _docPatient.OrderByDescending(pair => pair.Value).Take(5);
             foreach (var el in top5)
             {
@@ -48,9 +49,31 @@ namespace ClinicDBProject
             }
         }
 
-        private void MoneyCalc(DateTime date)
+        private void MoneyCalc(int date)
         {
-            
+            chart2.Series[0].Points.Clear();
+            if (date == 1)
+            {
+                for (int i = 1; i <= DateTime.Now.Day; i++)
+                {
+                    decimal sum = 0m;
+                    sum += (from key in _repository.GetAllPrices()
+                        where key.Date.Month == DateTime.Now.Month && key.Date.Day == i
+                        select key.Price).Sum();
+                    chart2.Series[0].Points.AddXY(DateTime.Now.AddDays(-DateTime.Now.Day+i).Day.ToString(), sum);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < date; ++i)
+                {
+                    decimal sum = 0m;
+                    sum += (from key in _repository.GetAllPrices()
+                            where key.Date.Month == DateTime.Now.AddMonths(-date + i + 1).Month
+                            select key.Price).Sum();
+                    chart2.Series[0].Points.AddXY(DateTime.Now.AddMonths(-date + i + 1).Month.ToString(), sum);
+                }
+            }
         }
         private void StatWindow_Load(object sender, EventArgs e)
         {
@@ -68,23 +91,31 @@ namespace ClinicDBProject
         private void patientsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             DateTime date = new DateTime();
+            int datetime = 0;
             switch (datesComboBox.SelectedIndex)
             {
                 case 0:
                     date = DateTime.Now.AddMonths(-1);
+                    datetime = 1;
                     break;
                 case 1:
                     date = DateTime.Now.AddMonths(-3);
+                    datetime = 3;
                     break;
                 case 2:
                     date = DateTime.Now.AddMonths(-6);
+                    datetime = 6;
                     break;
                 case 3:
                     date = DateTime.Now.AddMonths(-12);
+                    datetime = 12;
+                    break;
+                default:
                     break;
             }
             InitTop5Doctors(date);
-            //MoneyCalc(date);
+
+            MoneyCalc(datetime);
         }
 
         private void label1_Click(object sender, EventArgs e)

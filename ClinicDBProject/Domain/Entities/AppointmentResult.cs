@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
@@ -16,6 +17,7 @@ namespace Domain.Entities
         public string Diagnos { get; set; }
         public virtual ICollection<Analysis> Analyzes { get; set; }
         public virtual ICollection<Drug> Drugs { get; set; }
+        public virtual ICollection<Prices> Prices{ get; set; }
 
         public string GetAllDrugs()
         {

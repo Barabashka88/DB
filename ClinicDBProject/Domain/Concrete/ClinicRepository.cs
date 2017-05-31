@@ -48,6 +48,11 @@ namespace Domain.Concrete
             var analisis = from analis in _context.Analyzes select analis;
             return analisis.ToList();
         }
+        public IEnumerable<Prices> GetAllPrices()
+        {
+            var prices = from pri in _context.Prices select pri;
+            return prices.ToList();
+        }
         public void AddPerson(Person person)
         {
             _context.Persons.Add(person);
@@ -64,6 +69,11 @@ namespace Domain.Concrete
         {
             _context.AppointmentResults.Add(result);
         }
+        public void AddPrice(Prices result)
+        {
+            _context.Prices.Add(result);
+        }
+
         public void UpdatePatient(Patient patientObj)
         {
             _context.Patients.Attach(patientObj);

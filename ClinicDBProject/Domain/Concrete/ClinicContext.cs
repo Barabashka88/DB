@@ -16,7 +16,7 @@ namespace Domain.Concrete
         public DbSet<DocLogin> DocsLogins { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<AppointmentResult> AppointmentResults { get; set; }
-
+        public DbSet<Prices> Prices { get; set; }
         static ClinicContext()
         {
             Database.SetInitializer(new ClinicDbInitializer());
@@ -145,9 +145,9 @@ namespace Domain.Concrete
             {
                 Doctor = doctor,
                 Patient = patient,
-                Date =new  DateTime(2017,04,01),
+                Date = new DateTime(2017, 04, 01),
                 Description = "so bad"
-           
+
             };
             var appointment2 = new Appointment
             {
@@ -166,8 +166,9 @@ namespace Domain.Concrete
                 Analyzes = new List<Analysis>
                 {
                     analys1
-                }
+                },
             };
+           
             var appresult2 = new AppointmentResult
             {
                 Patient = patient2,
@@ -175,10 +176,24 @@ namespace Domain.Concrete
                 Drugs = new List<Drug>
                 {
                     drug1
-                }
+                },
             };
             context.AppointmentResults.Add(appresult);
             context.AppointmentResults.Add(appresult2);
+            var price1 = new Prices
+            {
+                Date = new DateTime(2017, 04, 01),
+                Price = analys1.Price,
+                Result = appresult
+            };
+            var price2= new Prices
+            {
+                Date = new DateTime(2017, 02, 01),
+                Price = drug1.Price,
+                Result = appresult2
+            };
+            context.Prices.Add(price2);
+            context.Prices.Add(price1);
             base.Seed(context);
         }
     }
